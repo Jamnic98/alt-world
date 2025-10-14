@@ -2,10 +2,14 @@
 
 import { JSX, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Environment, Text } from '@react-three/drei'
+import { Canvas, extend, useFrame, useLoader } from '@react-three/fiber'
+import { Environment } from '@react-three/drei'
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import helvetikerFontJSON from 'three/examples/fonts/helvetiker_regular.typeface.json'
 import { edgeTable, triTable } from '@/lib/mcTables'
 import { useRouter } from 'next/navigation'
+import globeTextureImage from '@/public/world_map_grayscale.png'
 
 /** --------- maths + helpers ---------- **/
 
@@ -271,59 +275,121 @@ function MCMetaballs({
     ;(geom.getAttribute('normal') as THREE.BufferAttribute).needsUpdate = true
   })
 
+  const globeTexture = useLoader(THREE.TextureLoader, '/images/globe.jpg')
+
   return (
     <mesh geometry={geom}>
-      <meshStandardMaterial color="#d0d2d6" metalness={1} roughness={0.1} />
+      <meshStandardMaterial
+        color="#c0c0c0"
+        metalness={1}
+        roughness={0.2}
+        onBeforeCompile={(shader) => {
+          shader.fragmentShader = `
+        uniform sampler2D globeTex;
+        ${shader.fragmentShader.replace(
+          `#include <map_fragment>`,
+          `
+          vec3 norm = normalize(vNormal);
+          vec2 uv = vec2(atan(norm.z, norm.x)/(2.0*3.14159265) + 0.5, acos(norm.y)/3.14159265);
+          vec4 texel = texture2D(globeTex, uv);
+          diffuseColor *= texel;
+          `
+        )}
+      `
+          shader.uniforms.globeTex = { value: globeTexture }
+        }}
+      />
     </mesh>
   )
 }
 
 /** --------- Text Ring ---------- **/
 
-export function TextRing({
+extend({ TextGeometry })
+
+function bendTextGeometry(geom: TextGeometry, radius: number) {
+  const posAttr = geom.attributes.position
+  const vertex = new THREE.Vector3()
+  const depthOffset = new THREE.Vector3()
+
+  for (let i = 0; i < posAttr.count; i++) {
+    vertex.fromBufferAttribute(posAttr, i)
+
+    // preserve the original depth (z) offset
+    depthOffset.set(0, 0, vertex.z)
+
+    // compute angle along sphere from x
+    const theta = vertex.x / radius
+    const sinTheta = Math.sin(theta)
+    const cosTheta = Math.cos(theta)
+
+    // bend along circle in XZ plane, add original depth
+    const x = radius * sinTheta
+    const z = -radius * (1 - cosTheta) + depthOffset.z
+
+    posAttr.setXYZ(i, x, vertex.y, z)
+  }
+
+  geom.computeVertexNormals() // smooth shading
+}
+
+export function SphericalTextRing({
   words,
   radius,
-  opacity,
-  color = '#a8abb0',
+  color = '#a5a5a5',
   spin = 0.1,
   fontSize = 0.3,
-  depthOffset = 0.015,
+  depth = 0.04, // actual 3D depth
 }: {
   words: string[]
   radius: number
-  opacity: number
   color?: string
   spin?: number
   fontSize?: number
-  depthOffset?: number
+  depth?: number
 }) {
   const group = useRef<THREE.Group>(null!)
+  const font = useMemo(() => new FontLoader().parse(helvetikerFontJSON), [])
+
+  const meshes = useMemo(() => {
+    return words.map((word) => {
+      const geom = new TextGeometry(word, {
+        font,
+        size: fontSize,
+        depth,
+        curveSegments: 12, // smooth arc
+        bevelEnabled: false,
+      })
+      geom.center()
+      bendTextGeometry(geom, radius) // curve along the circle
+
+      const mat = new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 1 })
+      return { geom, mat }
+    })
+  }, [words, font, fontSize, color, depth, radius])
 
   useFrame((_, dt) => {
-    if (spin && group.current) group.current.rotation.y += spin * dt
+    if (spin && group.current) group.current.rotation.y -= spin * dt
   })
-
-  if (opacity <= 0.001) return null
 
   return (
     <group ref={group}>
-      {words.map((w, i) => {
-        const a = (i / words.length) * Math.PI * 2
-        const x = Math.cos(a) * radius
-        const z = Math.sin(a) * radius
-        const rotation = [0, -a + Math.PI / 2, 0]
+      {meshes.map(({ geom, mat }, i) => {
+        const angle = (i / words.length) * Math.PI * 2
+        const x = radius * Math.cos(angle)
+        const z = radius * Math.sin(angle)
+        const y = 0
 
+        // rotate each word outward
+        const rotY = -angle + Math.PI / 2
         return (
-          <Text
+          <mesh
             key={i}
-            position={[x, 0, z - depthOffset]}
-            rotation={rotation as [number, number, number]}
-            fontSize={fontSize}
-            color={color}
-            material-toneMapped={false}
-          >
-            {w}
-          </Text>
+            geometry={geom}
+            material={mat}
+            position={[x, y, z]}
+            rotation={[0, rotY, 0]}
+          />
         )
       })}
     </group>
@@ -392,7 +458,7 @@ export default function HomePage() {
     ]
   }, [])
 
-  const mainWords = useMemo(() => ringWords('Alt World', 7, true), [])
+  const mainWords = useMemo(() => ringWords('Alt World', 5, true), [])
   const leftWords = useMemo(() => ringWords('Platform', 8), [])
   const rightWords = useMemo(() => ringWords('Studio', 9), [])
 
@@ -425,8 +491,8 @@ export default function HomePage() {
         <Environment
           preset="studio"
           background={false}
-          backgroundIntensity={0.2}
-          environmentIntensity={0.2}
+          backgroundIntensity={1}
+          environmentIntensity={1}
         />
 
         <ambientLight intensity={0.25} />
@@ -435,12 +501,12 @@ export default function HomePage() {
 
         <MCMetaballs resolution={64} bounds={3} isoLevel={4.5} getBalls={getBalls} />
 
-        {mainOpacity > 0 && <TextRing words={mainWords} radius={1.7} opacity={mainOpacity} />}
+        {mainOpacity > 0 && <SphericalTextRing words={mainWords} radius={1.7} />}
 
         {childOpacity > 0 && (
           <>
             <group position={[-textOffset, 0, 0]}>
-              <TextRing words={leftWords} radius={1.2} opacity={childOpacity} fontSize={0.2} />
+              <SphericalTextRing words={leftWords} radius={1.2} fontSize={0.2} />
               {/* clickable sphere area */}
               <mesh onClick={() => router.push('/platform')} position={[0, 0, 0]}>
                 <sphereGeometry args={[1.2, 32, 32]} />
@@ -449,7 +515,7 @@ export default function HomePage() {
             </group>
 
             <group position={[textOffset, 0, 0]}>
-              <TextRing words={rightWords} radius={1.2} opacity={childOpacity} fontSize={0.2} />
+              <SphericalTextRing words={rightWords} radius={1.2} fontSize={0.2} />
               {/* clickable sphere area */}
               <mesh onClick={() => router.push('/studio')} position={[0, 0, 0]}>
                 <sphereGeometry args={[1.2, 32, 32]} />
