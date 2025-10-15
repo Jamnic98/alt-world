@@ -9,7 +9,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import helvetikerFontJSON from 'three/examples/fonts/helvetiker_regular.typeface.json'
 import { edgeTable, triTable } from '@/lib/mcTables'
 import { useRouter } from 'next/navigation'
-import globeTextureImage from '@/public/world_map_grayscale.png'
+import { MeshStandardMaterial } from 'three'
 
 /** --------- maths + helpers ---------- **/
 
@@ -314,23 +314,19 @@ function bendTextGeometry(geom: TextGeometry, radius: number) {
 
   for (let i = 0; i < posAttr.count; i++) {
     vertex.fromBufferAttribute(posAttr, i)
-
-    // preserve the original depth (z) offset
     depthOffset.set(0, 0, vertex.z)
 
-    // compute angle along sphere from x
-    const theta = vertex.x / radius
+    const theta = vertex.x / radius // bend based on local x
     const sinTheta = Math.sin(theta)
     const cosTheta = Math.cos(theta)
 
-    // bend along circle in XZ plane, add original depth
     const x = radius * sinTheta
     const z = -radius * (1 - cosTheta) + depthOffset.z
 
     posAttr.setXYZ(i, x, vertex.y, z)
   }
 
-  geom.computeVertexNormals() // smooth shading
+  geom.computeVertexNormals()
 }
 
 export function SphericalTextRing({
@@ -339,7 +335,8 @@ export function SphericalTextRing({
   color = '#a5a5a5',
   spin = 0.1,
   fontSize = 0.3,
-  depth = 0.04, // actual 3D depth
+  depth = 0.04,
+  opacity = 1,
 }: {
   words: string[]
   radius: number
@@ -347,29 +344,63 @@ export function SphericalTextRing({
   spin?: number
   fontSize?: number
   depth?: number
+  opacity?: number
 }) {
   const group = useRef<THREE.Group>(null!)
   const font = useMemo(() => new FontLoader().parse(helvetikerFontJSON), [])
 
+  // Keep refs to each mesh's material so we can mutate opacity every frame
+  const matsRef = useRef<MeshStandardMaterial[]>([])
+
+  // create geometries once (recreate only when inputs change)
   const meshes = useMemo(() => {
     return words.map((word) => {
       const geom = new TextGeometry(word, {
         font,
         size: fontSize,
         depth,
-        curveSegments: 12, // smooth arc
+        curveSegments: 12,
         bevelEnabled: false,
       })
       geom.center()
-      bendTextGeometry(geom, radius) // curve along the circle
+      bendTextGeometry(geom, radius) // your bending fn
 
-      const mat = new THREE.MeshStandardMaterial({ color, transparent: true, opacity: 1 })
+      // create a material with default opacity 1 — we'll control it at runtime
+      const mat = new THREE.MeshStandardMaterial({
+        color,
+        transparent: true,
+        opacity: 1,
+        metalness: 0.0,
+        roughness: 0.4,
+      })
       return { geom, mat }
     })
-  }, [words, font, fontSize, color, depth, radius])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [words.join('|'), font, fontSize, depth, radius, color])
 
+  // sync materials ref array length
+  useEffect(() => {
+    matsRef.current = meshes.map((m) => m.mat as MeshStandardMaterial)
+    // ensure initial opacity applied
+    matsRef.current.forEach((m) => (m.opacity = opacity))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [meshes])
+
+  // animate rotation and update material opacity each frame
   useFrame((_, dt) => {
     if (spin && group.current) group.current.rotation.y -= spin * dt
+
+    // linearly set opacity (no allocations) — clamp small values
+    const o = Math.max(0, Math.min(1, opacity))
+    for (let i = 0; i < matsRef.current.length; i++) {
+      const mat = matsRef.current[i]
+      if (!mat) continue
+      // only write when different to avoid extra GL churn
+      if (Math.abs(mat.opacity - o) > 1e-3) mat.opacity = o
+      // make sure material flags are correct
+      mat.transparent = o < 1 || mat.transparent
+      mat.needsUpdate = false
+    }
   })
 
   return (
@@ -379,8 +410,6 @@ export function SphericalTextRing({
         const x = radius * Math.cos(angle)
         const z = radius * Math.sin(angle)
         const y = 0
-
-        // rotate each word outward
         const rotY = -angle + Math.PI / 2
         return (
           <mesh
@@ -395,12 +424,12 @@ export function SphericalTextRing({
     </group>
   )
 }
-
 /** --------- Page ---------- **/
 
 export default function HomePage() {
   const router = useRouter()
 
+  const [showChild, setShowChild] = useState(false)
   const [entered, setEntered] = useState(false)
   const [splitOn, setSplitOn] = useState(false)
   const splitRef = useRef(0)
@@ -444,6 +473,9 @@ export default function HomePage() {
       if (from === to) return
       const t = clamp01((performance.now() - t0) / dur)
       splitRef.current = THREE.MathUtils.lerp(from, to, easeInOutCubic(t))
+
+      // update React state once p crosses threshold
+      if (!showChild && splitRef.current > 0.65) setShowChild(true)
     })
     return null
   }
@@ -459,12 +491,11 @@ export default function HomePage() {
   }, [])
 
   const mainWords = useMemo(() => ringWords('Alt World', 5, true), [])
-  const leftWords = useMemo(() => ringWords('Platform', 8), [])
-  const rightWords = useMemo(() => ringWords('Studio', 9), [])
+  const leftWords = useMemo(() => ringWords('Platform', 6), [])
+  const rightWords = useMemo(() => ringWords('Studio', 8), [])
 
   const p = splitRef.current
   const mainOpacity = splitOn ? 0 : p < 0.12 ? 1 : 0
-  const childOpacity = p > 0.65 ? 1 : 0
   const textOffset = 1.5 * easeInOutCubic(p)
 
   return (
@@ -503,12 +534,17 @@ export default function HomePage() {
 
         {mainOpacity > 0 && <SphericalTextRing words={mainWords} radius={1.7} />}
 
-        {childOpacity > 0 && (
+        {showChild && (
           <>
             <group position={[-textOffset, 0, 0]}>
               <SphericalTextRing words={leftWords} radius={1.2} fontSize={0.2} />
               {/* clickable sphere area */}
-              <mesh onClick={() => router.push('/platform')} position={[0, 0, 0]}>
+              <mesh
+                onClick={() => router.push('/platform')}
+                onPointerOut={() => (document.body.style.cursor = 'default')}
+                onPointerOver={() => (document.body.style.cursor = 'pointer')}
+                position={[0, 0, 0]}
+              >
                 <sphereGeometry args={[1.2, 32, 32]} />
                 <meshBasicMaterial transparent opacity={0} />
               </mesh>
@@ -517,7 +553,12 @@ export default function HomePage() {
             <group position={[textOffset, 0, 0]}>
               <SphericalTextRing words={rightWords} radius={1.2} fontSize={0.2} />
               {/* clickable sphere area */}
-              <mesh onClick={() => router.push('/studio')} position={[0, 0, 0]}>
+              <mesh
+                onClick={() => router.push('/studio')}
+                onPointerOut={() => (document.body.style.cursor = 'default')}
+                onPointerOver={() => (document.body.style.cursor = 'pointer')}
+                position={[0, 0, 0]}
+              >
                 <sphereGeometry args={[1.2, 32, 32]} />
                 <meshBasicMaterial transparent opacity={0} />
               </mesh>
