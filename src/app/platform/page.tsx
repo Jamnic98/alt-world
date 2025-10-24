@@ -9,7 +9,7 @@ import { SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
 
 export const PlatformPage = () => {
   return (
-    <section className="relative min-h-screen bg-black text-gray-200 flex flex-col justify-center items-center px-6 md:px-16 py-20 overflow-visible">
+    <section className="relative min-h-screen bg-black text-gray-200 flex flex-col justify-between items-center px-6 md:px-16 py-10 overflow-hidden">
       {/* Instagram Icon */}
       <a
         href={WE_ARE_ALT_WORLD_INSTAGRAM}
@@ -21,10 +21,10 @@ export const PlatformPage = () => {
         <FaInstagram size={28} />
       </a>
 
-      {/* Grid container */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,400px)] items-center w-full max-w-6xl gap-10 overflow-visible">
+      {/* Content grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,360px)] items-center w-full max-w-6xl gap-4 flex-grow">
         {/* Left column: text */}
-        <div className="space-y-6 text-center lg:text-left min-w-0">
+        <div className="space-y-6 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl xl:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-400 to-gray-600">
             OUR PLATFORM
           </h1>
@@ -44,9 +44,9 @@ export const PlatformPage = () => {
           </p>
         </div>
 
-        {/* Right column: iPhone mockup */}
+        {/* Right column: phone mockup */}
         <div className="flex justify-center lg:justify-end">
-          <div className="relative w-[210px] sm:w-[240px] md:w-[270px] lg:w-[320px]">
+          <div className="relative w-60">
             <Image
               src="/images/alt_deck.webp"
               alt="iPhone mockup"
@@ -59,8 +59,8 @@ export const PlatformPage = () => {
         </div>
       </div>
 
-      {/* Slideshow below */}
-      <div className="w-full max-w-[2000px] mt-16">
+      {/* Compact slideshow at bottom */}
+      <div className="w-full max-w-[1800px] mt-8">
         <ImageSlideshow images={SLIDESHOW_IMAGES} />
       </div>
     </section>

@@ -228,7 +228,7 @@ function buildIsoSurface(
 
 /** --------- R3F metaball mesh (CPU marching cubes) ---------- **/
 function MCMetaballs({
-  resolution = 64,
+  resolution = 48,
   bounds = 1.6,
   isoLevel = 6.5,
   getBalls,
@@ -530,7 +530,7 @@ export default function HomePage() {
         <directionalLight intensity={0.8} position={[5, 6, 4]} />
         <directionalLight intensity={0.3} position={[-5, -3, -2]} />
 
-        <MCMetaballs resolution={64} bounds={3} isoLevel={4.5} getBalls={getBalls} />
+        <MCMetaballs resolution={48} bounds={3} isoLevel={4.5} getBalls={getBalls} />
 
         {mainOpacity > 0 && <SphericalTextRing words={mainWords} radius={1.7} />}
 
