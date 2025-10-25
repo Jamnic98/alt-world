@@ -1,8 +1,10 @@
 export const WE_ARE_ALT_WORLD_INSTAGRAM = 'https://www.instagram.com/wearealtworld/?hl=en-gb'
-export const WE_ARE_ALT_STUDIO_INSTAGRAM = WE_ARE_ALT_WORLD_INSTAGRAM
+export const WE_ARE_ALT_STUDIO_INSTAGRAM = 'https://www.instagram.com/wearealtstudios/?hl=en-gb'
 
 // Image slideshow
 const slideshowFolder = '/images/slideshow/'
+const studioSlideshowFolder = `${slideshowFolder}studio/`
+const platformSlideshowFolder = `${slideshowFolder}platform/`
 
 export const SCROLL_SPEED = 0.25
 
@@ -71,3 +73,7 @@ export const SLIDESHOW_IMAGES = [
   { src: `${slideshowFolder}62.webp`, alt: '' },
   { src: `${slideshowFolder}63.webp`, alt: '' },
 ]
+
+export const STUDIO_SLIDESHOW_IMAGES = [{ src: `${studioSlideshowFolder}`, alt: '' }]
+
+export const PLATFORM_SLIDESHOW_IMAGES = [{ src: `${platformSlideshowFolder}`, alt: '' }]

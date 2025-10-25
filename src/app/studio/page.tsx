@@ -1,60 +1,66 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import { FaInstagram } from 'react-icons/fa'
-
 import { ImageSlideshow } from '@/components'
 import { SLIDESHOW_IMAGES, WE_ARE_ALT_STUDIO_INSTAGRAM } from '@/constants'
 
 export const StudioPage = () => {
   return (
-    <section className="relative min-h-screen bg-black text-gray-200 flex flex-col justify-between items-center px-6 md:px-16 py-10 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col justify-between items-center px-6 md:px-16 py-10 overflow-hidden text-black">
+      {/* Background video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/output.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Optional dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/30 z-10" />
+
       {/* Instagram Icon */}
       <a
         href={WE_ARE_ALT_STUDIO_INSTAGRAM}
         target="_blank"
         rel="noopener noreferrer"
-        className="absolute top-6 right-6 text-gray-400 hover:text-gray-100 transition-colors duration-200"
+        className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors duration-200 z-20"
         aria-label="Visit our studio Instagram"
       >
         <FaInstagram size={28} />
       </a>
 
       {/* Text content */}
-      <div className="max-w-4xl text-center space-y-6 flex-grow flex flex-col justify-center">
-        <header className="text-center space-y-4 max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-gray-400 to-gray-600">
-            STUDIO
-          </h1>
+      <div className="relative z-20 max-w-4xl text-center space-y-6 flex-grow flex flex-col justify-center">
+        <header className="space-y-4 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">STUDIO</h1>
 
-          <p className="text-xs sm:text-sm md:text-base uppercase tracking-[0.25em] text-gray-500 font-light leading-relaxed max-w-2xl mx-auto border-t border-gray-800 pt-4">
-            Placement & Talent Strategy&nbsp;&nbsp;|&nbsp;&nbsp;Brand
-            Building&nbsp;&nbsp;|&nbsp;&nbsp;Image Consulting&nbsp;&nbsp;|&nbsp;&nbsp;Creative
-            Project Management&nbsp;&nbsp;|&nbsp;&nbsp;Partnerships
+          <p className="tracking-[0.5em] text-white font-bold leading-relaxed max-w-2xl mx-auto border-t border-white pt-4">
+            BRAND&nbsp;&nbsp;<span className="text-2xl font-light">|</span>&nbsp;&nbsp;
+            IMAGE&nbsp;&nbsp;<span className="text-2xl font-light">|</span>&nbsp;&nbsp;IMPACT
           </p>
         </header>
 
-        <div className="space-y-5 text-gray-400 font-light">
+        <div className="space-y-5 text-white/90 font-light">
           <p className="text-lg leading-relaxed">
-            <span className="text-gray-200 font-medium">ALT WORLD Studio</span> is the creative
-            engine behind our platform — where bold ideas, community connection, and cultural
-            strategy come to life. We lead special projects that connect BIPOC talent to their
-            communities and the wider industry, including fashion week placements, curated brand
-            partnerships, and culturally aligned activations.
+            We enjoy bridging the gap authentically between brands, POC talent and culture, because
+            alignment takes skill.
           </p>
-
           <p className="text-lg leading-relaxed">
-            The studio also supports creatives in developing and protecting their own IP — from
-            concept to execution — helping bring original ideas into the world with clarity and
-            integrity. Whether it's producing immersive experiences or building long-term brand
-            relationships, <span className="text-gray-200 font-medium">ALT WORLD Studio</span> is
-            dedicated to elevating the next generation of creative leaders.
+            From placement strategy and PR, to talent and brand relations, our focus is simple:
+            making exclusivity inclusive.
           </p>
         </div>
+        <p className="text-sm leading-relaxed font-semibold text-white">
+          #ALTStudio #ImageBrandImpact
+        </p>
       </div>
 
-      {/* Compact slideshow */}
-      <div className="w-full max-w-[1800px] mt-8">
+      {/* Slideshow */}
+      <div className="relative z-20 w-full max-w-[1800px]">
         <ImageSlideshow images={SLIDESHOW_IMAGES} />
       </div>
     </section>

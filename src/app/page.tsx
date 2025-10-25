@@ -21,9 +21,7 @@ function GradientDome(props: JSX.IntrinsicElements['mesh']) {
     canvas.width = canvas.height = size
     const ctx = canvas.getContext('2d')!
     const grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2)
-    grad.addColorStop(0.0, '#333') // dim silver centre
-    grad.addColorStop(0.3, '#111') // quick fade to dark
-    grad.addColorStop(1.0, '#000') // deep black outer sphere
+    grad.addColorStop(0.0, '#FFF') // dim silver centre
 
     ctx.fillStyle = grad
     ctx.fillRect(0, 0, size, size)
@@ -332,7 +330,7 @@ function bendTextGeometry(geom: TextGeometry, radius: number) {
 export function SphericalTextRing({
   words,
   radius,
-  color = '#a5a5a5',
+  color = '#363433',
   spin = 0.1,
   fontSize = 0.3,
   depth = 0.04,
@@ -504,7 +502,7 @@ export default function HomePage() {
         position: 'relative',
         width: '100%',
         height: '100dvh',
-        background: 'black',
+        background: 'white',
         overflow: 'hidden',
       }}
     >
@@ -570,20 +568,20 @@ export default function HomePage() {
       {!entered && (
         <button
           onClick={trigger}
-          className="text-3xl"
+          className="text-3xl text-center"
           style={{
             position: 'absolute',
             left: '50%',
             bottom: '8vh',
             transform: 'translateX(-50%)',
-            color: '#ECEFF3',
+            color: '#000',
             letterSpacing: '0.2em',
             cursor: 'pointer',
-            opacity: 0.7,
+            opacity: 1,
           }}
           aria-label="Enter Alt World"
         >
-          [ ENTER ]
+          <span className="text-4xl">[</span> ENTER <span className="text-4xl">]</span>
         </button>
       )}
     </main>
