@@ -2,7 +2,7 @@
 
 import { FaInstagram } from 'react-icons/fa'
 import { ImageSlideshow } from '@/components'
-import { SLIDESHOW_IMAGES, WE_ARE_ALT_STUDIO_INSTAGRAM } from '@/constants'
+import { STUDIO_SLIDESHOW_IMAGES, WE_ARE_ALT_STUDIO_INSTAGRAM } from '@/constants'
 
 export const StudioPage = () => {
   return (
@@ -15,12 +15,12 @@ export const StudioPage = () => {
         loop
         playsInline
       >
-        <source src="/output.mp4" type="video/mp4" />
+        <source src="/videos/output.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Optional dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
       {/* Instagram Icon */}
       <a
@@ -60,8 +60,8 @@ export const StudioPage = () => {
       </div>
 
       {/* Slideshow */}
-      <div className="relative z-20 w-full max-w-[1800px]">
-        <ImageSlideshow images={SLIDESHOW_IMAGES} />
+      <div className="relative z-20 w-full">
+        <ImageSlideshow images={STUDIO_SLIDESHOW_IMAGES} />
       </div>
     </section>
   )

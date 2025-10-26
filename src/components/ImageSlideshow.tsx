@@ -66,15 +66,14 @@ const ImageSlideshow = ({ images }: ImageSlideshowProps) => {
             className="
               flex-shrink-0 relative 
               h-72
-              w-auto flex items-center justify-center px-2
-            "
+              w-auto flex items-center justify-center px-2            "
           >
             <Image
               src={img.src}
               alt={img.alt || ''}
               width={800}
               height={600}
-              className="object-contain h-full w-auto max-w-[70vw] lg:max-w-[40vw] xl:max-w-[35vw]"
+              className="object-contain h-full w-auto"
               priority={i < 2}
             />
           </div>

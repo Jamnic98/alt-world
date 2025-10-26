@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa'
 
 import { ImageSlideshow } from '@/components'
-import { SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
+import { PLATFORM_SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
 
 export const PlatformPage = () => {
   return (
@@ -57,7 +57,7 @@ export const PlatformPage = () => {
 
       {/* Compact slideshow at bottom */}
       <div className="w-full max-w-[1800px] mt-8">
-        <ImageSlideshow images={SLIDESHOW_IMAGES} />
+        <ImageSlideshow images={PLATFORM_SLIDESHOW_IMAGES} />
       </div>
     </section>
   )
