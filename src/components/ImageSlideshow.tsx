@@ -8,7 +8,7 @@ interface ImageSlideshowProps {
   images: { src: string; alt?: string }[]
 }
 
-const ImageSlideshow = ({ images }: ImageSlideshowProps) => {
+const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const frameRef = useRef<number | null>(null)
 
