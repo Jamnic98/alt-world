@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
 import { SCROLL_SPEED } from '@/constants'
+import { shuffleArray } from '@/lib/utils'
 
 type ImageType = {
   src: string
@@ -20,17 +21,13 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
 
   // Shuffle images on mount
   useEffect(() => {
-    const shuffled = [...images]
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
-      ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-    }
+    const shuffled = shuffleArray(images)
     setDisplayImages(shuffled)
   }, [images])
 
   // Start animation once images are set
   useEffect(() => {
-    if (displayImages.length === 0) return // wait until we have images
+    if (displayImages.length === 0) return
 
     const el = containerRef.current
     if (!el) return

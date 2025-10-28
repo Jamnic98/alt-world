@@ -5,7 +5,7 @@ import { FaInstagram } from 'react-icons/fa'
 import { NavLink } from '@/components'
 
 type HeaderProps = {
-  variant?: 'light' | 'dark' // determines colours
+  variant?: 'light' | 'dark'
   instagramUrl?: string
 }
 
