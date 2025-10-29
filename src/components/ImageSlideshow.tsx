@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { SCROLL_SPEED } from '@/constants'
+import { SLIDESHOW_SCROLL_SPEED } from '@/constants'
 import { shuffleArray } from '@/lib/utils'
 
 type ImageType = {
@@ -40,7 +40,7 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
       animationRunning = true
 
       const step = () => {
-        offset -= SCROLL_SPEED
+        offset -= SLIDESHOW_SCROLL_SPEED
         el.style.transform = `translateX(${offset}px)`
         if (Math.abs(offset) >= el.scrollWidth / 2) offset = 0
         frameRef.current = requestAnimationFrame(step)

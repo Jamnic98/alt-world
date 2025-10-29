@@ -3,9 +3,9 @@
 import Image from 'next/image'
 
 import { Header, ImageSlideshow } from '@/components'
-import { PLATFORM_SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
+import { imageFolder, PLATFORM_SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
 
-export const PlatformPage = () => {
+const PlatformPage = () => {
   return (
     <div>
       <Header variant="light" instagramUrl={WE_ARE_ALT_WORLD_INSTAGRAM} />
@@ -32,7 +32,7 @@ export const PlatformPage = () => {
           <div className="flex justify-center">
             <div className="relative w-60">
               <Image
-                src="/images/alt_deck.webp"
+                src={`${imageFolder}/alt-deck.webp`}
                 alt="iPhone mockup"
                 width={400}
                 height={800}

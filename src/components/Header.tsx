@@ -4,12 +4,13 @@ import { FaInstagram } from 'react-icons/fa'
 
 import { NavLink } from '@/components'
 
-type HeaderProps = {
-  variant?: 'light' | 'dark'
-  instagramUrl?: string
+type HeaderVariant = 'light' | 'dark'
+interface HeaderProps {
+  variant: HeaderVariant
+  instagramUrl: string
 }
 
-const Header: React.FC<HeaderProps> = ({ variant = 'light', instagramUrl = '#' }) => {
+const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
   // Base text colour
   const textColor = variant === 'light' ? 'text-black' : 'text-white'
 
@@ -22,15 +23,15 @@ const Header: React.FC<HeaderProps> = ({ variant = 'light', instagramUrl = '#' }
 
   return (
     <header
-      className={`w-full py-4 px-8 flex items-center justify-between fixed top-0 z-50 bg-transparent ${textColor}`}
+      className={`w-full py-4 px-4 flex items-center justify-between fixed top-0 z-50 bg-transparent ${textColor}`}
     >
       {/* Left: Logo */}
-      <Link href="/" className="flex items-center">
+      <Link href="/" className="flex items-center mx-2">
         <Image src={logoSrc} alt="AltWorld Logo" width={80} height={80} priority />
       </Link>
 
       {/* Center: Navigation */}
-      <nav className="flex gap-24">
+      <nav className="flex gap-4 sm:gap-12 md:gap-24">
         <NavLink href="/platform" label="PLATFORM" />
         <NavLink href="/studio" label="STUDIO" />
       </nav>

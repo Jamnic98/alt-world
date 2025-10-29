@@ -1,9 +1,9 @@
 'use client'
 
 import { Header, ImageSlideshow } from '@/components'
-import { STUDIO_SLIDESHOW_IMAGES, WE_ARE_ALT_STUDIO_INSTAGRAM } from '@/constants'
+import { videoFolder, STUDIO_SLIDESHOW_IMAGES, WE_ARE_ALT_STUDIO_INSTAGRAM } from '@/constants'
 
-export const StudioPage = () => {
+const StudioPage = () => {
   return (
     <div>
       <Header variant="dark" instagramUrl={WE_ARE_ALT_STUDIO_INSTAGRAM} />
@@ -16,7 +16,7 @@ export const StudioPage = () => {
           loop
           playsInline
         >
-          <source src="/videos/output.mp4" type="video/mp4" />
+          <source src={`${videoFolder}/studio-page-bg-video.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: 'Alt World',
 }
 
-export const RootLayout = ({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode
