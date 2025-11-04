@@ -68,9 +68,9 @@ const SphereScene = ({
 
   return (
     <>
-      <ambientLight intensity={0.45} />
-      <directionalLight position={[5, 5, 5]} intensity={0.8} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.3} />
+      <ambientLight intensity={0.1} />
+      <directionalLight position={[5, 5, 5]} intensity={0.1} />
+      <directionalLight position={[-5, -2, -3]} intensity={0.1} />
 
       <mesh
         ref={sphereRef}
@@ -83,20 +83,21 @@ const SphereScene = ({
         <sphereGeometry args={[1.2, 64, 64]} />
         <meshStandardMaterial
           map={texture}
-          color="#ccc"
-          metalness={1.0}
-          roughness={0.1}
+          color="#eee"
+          metalness={0.8}
+          roughness={0.6}
           transparent
           opacity={opacity}
         />
       </mesh>
 
       <RotatingTextRing
-        text="Alt World"
+        text="ALT WORLD"
         repeats={3}
-        radius={1.5 * scale}
-        fontSize={0.4 * scale}
+        radius={1.3 * scale}
+        fontSize={0.3 * scale}
         opacity={1}
+        spin={0.07}
         depth={0.05 * scale}
         visible={showTextRing}
       />
