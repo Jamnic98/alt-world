@@ -9,6 +9,7 @@ import { SphereScene } from '@/components'
 
 function VantaBackground() {
   const ref = useRef<HTMLDivElement>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [vantaEffect, setVantaEffect] = useState<any>(null)
 
   useEffect(() => {

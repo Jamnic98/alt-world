@@ -84,8 +84,8 @@ const SphereScene = ({
         <meshStandardMaterial
           map={texture}
           color="#eee"
-          metalness={0.8}
-          roughness={0.6}
+          metalness={1}
+          roughness={0.4}
           transparent
           opacity={opacity}
         />
@@ -94,7 +94,7 @@ const SphereScene = ({
       <RotatingTextRing
         text="ALT WORLD"
         repeats={3}
-        radius={1.3 * scale}
+        radius={1.4 * scale}
         fontSize={0.3 * scale}
         opacity={1}
         spin={0.07}
