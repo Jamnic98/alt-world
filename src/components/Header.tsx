@@ -19,7 +19,7 @@ const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
 
   // Select logo based on variant
   const logoSrc =
-    variant === 'light' ? '/images/altworld-logo-dark.webp' : '/images/altworld-logo-light.webp'
+    variant === 'light' ? '/images/logos/alt_world.webp' : '/images/logos/alt_studio.webp'
 
   return (
     <header

@@ -9,7 +9,8 @@ import { SphereScene } from '@/components'
 
 function VantaBackground() {
   const ref = useRef<HTMLDivElement>(null)
-  const [vantaEffect, setVantaEffect] = useState<any>(null)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [, /* vantaEffect */ setVantaEffect] = useState<any>(null)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -86,7 +87,7 @@ export default function HomePage() {
       {/* UI overlay */}
       {!zooming && !showLinks && (
         <button
-          className="absolute bottom-28 left-1/2 -translate-x-1/2 text-3xl text-gray-300 z-20"
+          className="absolute bottom-28 left-1/2 -translate-x-1/2 text-3xl text-gray-300 z-20 font-semibold"
           aria-label="Enter Alt World"
         >
           <span className="text-4xl">[</span> ENTER <span className="text-4xl">]</span>

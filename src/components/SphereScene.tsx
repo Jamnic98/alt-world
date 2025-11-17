@@ -68,9 +68,9 @@ const SphereScene = ({
 
   return (
     <>
-      <ambientLight intensity={0.1} />
+      {/* <ambientLight intensity={0.1} />
       <directionalLight position={[5, 5, 5]} intensity={0.1} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.1} />
+      <directionalLight position={[-5, -2, -3]} intensity={0.1} /> */}
 
       <mesh
         ref={sphereRef}
@@ -94,7 +94,7 @@ const SphereScene = ({
       <RotatingTextRing
         text="ALT WORLD"
         repeats={3}
-        radius={1.3 * scale}
+        radius={1.5 * scale}
         fontSize={0.3 * scale}
         opacity={1}
         spin={0.07}
