@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa'
 
 import { NavLink } from '@/components'
+import { imageFolder } from '@/constants'
 
 type HeaderVariant = 'light' | 'dark'
 interface HeaderProps {
@@ -11,32 +12,29 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
-  // Base text colour
   const textColor = variant === 'light' ? 'text-black' : 'text-white'
-
-  // Hover colour: choose high contrast
   const hoverColor = variant === 'light' ? 'hover:text-gray-600' : 'hover:text-gray-400'
-
-  // Select logo based on variant
   const logoSrc =
-    variant === 'light' ? '/images/logos/alt_world.webp' : '/images/logos/alt_studio.webp'
+    variant === 'light'
+      ? `${imageFolder}/logos/alt_world.webp`
+      : `${imageFolder}/logos/alt_studio.webp`
 
   return (
     <header
-      className={`w-full py-4 px-4 flex items-center justify-between fixed top-0 z-50 bg-transparent ${textColor}`}
+      className={`
+        absolute top-0 w-full py-4 px-4 flex items-center justify-between z-50
+        bg-transparent ${textColor}
+      `}
     >
-      {/* Left: Logo */}
       <Link href="/" className="flex items-center mx-2">
         <Image src={logoSrc} alt="AltWorld Logo" width={80} height={80} priority />
       </Link>
 
-      {/* Center: Navigation */}
       <nav className="flex gap-4 sm:gap-12 md:gap-24">
         <NavLink href="/platform" label="PLATFORM" />
         <NavLink href="/studio" label="STUDIO" />
       </nav>
 
-      {/* Right: Instagram */}
       <a
         href={instagramUrl}
         target="_blank"

@@ -70,12 +70,12 @@ export default function HomePage() {
         camera={{ fov: 50, position: [0, 0, 6] }}
         className="absolute inset-0 z-10"
       >
-        <Environment
+        {/* <Environment
           preset="studio"
           background={false}
           backgroundIntensity={0.1}
           environmentIntensity={0.3}
-        />
+        /> */}
         <SphereScene
           zooming={zooming}
           setZooming={setZooming}
@@ -85,14 +85,14 @@ export default function HomePage() {
       </Canvas>
 
       {/* UI overlay */}
-      {!zooming && !showLinks && (
+      {/* {!zooming && !showLinks && (
         <button
           className="absolute bottom-28 left-1/2 -translate-x-1/2 text-3xl text-gray-300 z-20 font-semibold"
           aria-label="Enter Alt World"
         >
           <span className="text-4xl">[</span> ENTER <span className="text-4xl">]</span>
         </button>
-      )}
+      )} */}
       <AnimatePresence>
         {showLinks && (
           <motion.div

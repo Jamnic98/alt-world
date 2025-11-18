@@ -68,9 +68,9 @@ const SphereScene = ({
 
   return (
     <>
-      {/* <ambientLight intensity={0.1} />
-      <directionalLight position={[5, 5, 5]} intensity={0.1} />
-      <directionalLight position={[-5, -2, -3]} intensity={0.1} /> */}
+      <ambientLight intensity={1.2} />
+      <directionalLight position={[5, 5, 5]} intensity={1.2} />
+      <directionalLight position={[-5, -2, -3]} intensity={1.2} />
 
       <mesh
         ref={sphereRef}
@@ -85,7 +85,7 @@ const SphereScene = ({
           map={texture}
           color="#eee"
           metalness={0.8}
-          roughness={0.6}
+          roughness={0.3}
           transparent
           opacity={opacity}
         />
@@ -98,7 +98,7 @@ const SphereScene = ({
         fontSize={0.3 * scale}
         opacity={1}
         spin={0.07}
-        depth={0.05 * scale}
+        depth={0.06 * scale}
         visible={showTextRing}
       />
     </>

@@ -31,7 +31,7 @@ const bendTextGeometry = (geom: TextGeometry, radius: number) => {
 const RotatingTextRing = ({
   text,
   radius,
-  color = '#888',
+  color = '#aaa',
   spin,
   fontSize,
   depth,
@@ -74,8 +74,8 @@ const RotatingTextRing = ({
         color,
         transparent: true,
         opacity,
-        metalness: 0,
-        roughness: 1,
+        metalness: 0.3,
+        roughness: 0.8,
       })
       return { geom, mat }
     })
