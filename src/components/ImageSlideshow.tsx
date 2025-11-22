@@ -1,9 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { SLIDESHOW_SCROLL_SPEED } from '@/constants'
-import { shuffleArray } from '@/lib/utils'
 
 type ImageType = {
   src: string
@@ -17,17 +16,10 @@ interface ImageSlideshowProps {
 const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const frameRef = useRef<number | null>(null)
-  const [displayImages, setDisplayImages] = useState<ImageType[]>([])
-
-  // Shuffle images on mount
-  useEffect(() => {
-    const shuffled = shuffleArray(images)
-    setDisplayImages(shuffled)
-  }, [images])
 
   // Start animation once images are set
   useEffect(() => {
-    if (displayImages.length === 0) return
+    if (images.length === 0) return
 
     const el = containerRef.current
     if (!el) return
@@ -62,9 +54,9 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
       resizeObserver.disconnect()
       if (frameRef.current) cancelAnimationFrame(frameRef.current)
     }
-  }, [displayImages])
+  }, [images])
 
-  const doubled = [...displayImages, ...displayImages]
+  const doubled = [...images, ...images]
 
   return (
     <div className="relative w-full overflow-hidden bg-transparent">

@@ -7,9 +7,9 @@ import { imageFolder, PLATFORM_SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } fr
 
 const PlatformPage = () => {
   return (
-    <div>
+    <div className="bg-gray-100">
       <Header variant="light" instagramUrl={WE_ARE_ALT_WORLD_INSTAGRAM} />
-      <section className="relative min-h-screen bg-gray-100 flex flex-col justify-between items-center px-6 md:px-16 py-12 overflow-hidden">
+      <section className="relative flex flex-col justify-between items-center px-6 md:px-16 py-12 overflow-hidden">
         <div className="space-y-8">
           <div className="max-w-4xl mt-20 text-center space-y-6 flex-grow flex flex-col justify-center">
             <header className="text-center space-y-4 max-w-3xl mx-auto text-black ">
