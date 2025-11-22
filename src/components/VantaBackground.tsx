@@ -1,52 +1,49 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
+import * as THREE from 'three'
 
-const VantaBackground = () => {
-  const ref = useRef<HTMLDivElement>(null)
+import { imageFolder } from '@/constants'
+
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    VANTA: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    THREE: any
+  }
+}
+
+export default function VantaBackground() {
+  const vantaRef = useRef<HTMLDivElement>(null)
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [, setVantaEffect] = useState<any>(null)
+  const effectRef = useRef<any>(null)
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    if (!ref.current) return
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((window as any)._vantaWaves) return // already initialized
+    window.THREE = THREE
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let effect: any = null
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if ((window as any).VANTA && (window as any).VANTA.CLOUDS2) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      effect = (window as any).VANTA.CLOUDS2({
-        el: ref.current,
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: 200.0,
-        minWidth: 200.0,
-        backgroundColor: '#000',
-        skyColor: 0x0,
-        cloudColor: 0x0,
-        scale: 1.0,
-        texturePath: './images/noise.png',
-      })
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ;(window as any)._vantaWaves = effect
-      setVantaEffect(effect)
+    const script = document.createElement('script')
+    script.src = '/js/vanta.clouds2.min.js'
+    script.onload = () => {
+      if (vantaRef.current && window.VANTA?.CLOUDS2) {
+        effectRef.current = window.VANTA.CLOUDS2({
+          el: vantaRef.current,
+          THREE,
+          backgroundColor: 0x0,
+          skyColor: 0x0,
+          cloudColor: 0x0,
+          texturePath: `${imageFolder}/noise.png`,
+          speed: 0.8,
+        })
+      }
     }
+    document.body.appendChild(script)
 
     return () => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if ((window as any)._vantaWaves === effect) {
-        effect.destroy()
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        delete (window as any)._vantaWaves
-      }
+      effectRef.current?.destroy()
+      document.body.removeChild(script)
     }
   }, [])
 
-  return <div ref={ref} className="absolute inset-0 -z-10 pointer-events-none" />
+  return <div ref={vantaRef} className="absolute inset-0 z-0 w-full h-full" />
 }
-
-export default VantaBackground

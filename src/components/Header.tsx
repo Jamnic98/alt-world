@@ -13,7 +13,6 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
   const textColor = variant === 'light' ? 'text-black' : 'text-white'
-  const hoverColor = variant === 'light' ? 'hover:text-gray-600' : 'hover:text-gray-400'
   const logoSrc =
     variant === 'light'
       ? `${imageFolder}/logos/alt_world.webp`
@@ -39,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
         href={instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`ml-8 transition-colors ${hoverColor}`}
+        className={'ml-8'}
         aria-label="Visit our studio Instagram"
       >
         <FaInstagram size={28} />
