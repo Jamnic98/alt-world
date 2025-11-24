@@ -30,9 +30,9 @@ export default function VantaBackground() {
           el: vantaRef.current,
           THREE,
           backgroundColor: 0x0,
-          skyColor: 0x0,
-          cloudColor: 0x0,
-          texturePath: `${imageFolder}/noise.png`,
+          skyColor: 0x888888,
+          cloudColor: 0xffffff,
+          texturePath: `${imageFolder}/noise.webp`,
           speed: 0.8,
         })
       }
