@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
         <Image src={logoSrc} alt="AltWorld Logo" width={80} height={80} priority />
       </Link>
 
-      <nav className="flex gap-4 sm:gap-12 md:gap-24">
+      <nav className="mx-4 flex gap-8 sm:gap-12 md:gap-24 text-sm sm:text-lg md:text-xl font-medium">
         <NavLink href="/platform" label="PLATFORM" />
         <NavLink href="/studio" label="STUDIO" />
       </nav>

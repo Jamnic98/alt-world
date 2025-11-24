@@ -40,7 +40,7 @@ export default function HomePage() {
           >
             <a
               href="/studio"
-              className="text-gray-300 text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
+              className="text-gray-300 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
              transform transition-transform duration-200 hover:scale-105"
             >
               STUDIO
@@ -48,7 +48,7 @@ export default function HomePage() {
 
             <a
               href="/platform"
-              className="text-gray-300 text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
+              className="text-gray-300 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
              transform transition-transform duration-200 hover:scale-105"
             >
               PLATFORM
