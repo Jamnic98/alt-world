@@ -61,7 +61,7 @@ const PlatformPage = () => {
           </p>
         </div>
         {/* Slideshow pinned at bottom */}
-        <div className="w-full z-20">
+        <div className="w-full mt-8 z-20">
           <ImageSlideshow images={PLATFORM_SLIDESHOW_IMAGES} />
         </div>
       </section>
