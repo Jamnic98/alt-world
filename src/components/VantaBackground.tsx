@@ -25,13 +25,17 @@ export default function VantaBackground() {
     const script = document.createElement('script')
     script.src = '/js/vanta.clouds2.min.js'
     script.onload = () => {
-      if (vantaRef.current && window.VANTA?.CLOUDS2) {
-        effectRef.current = window.VANTA.CLOUDS2({
+      if (vantaRef.current && window.VANTA?.CLOUDS) {
+        effectRef.current = window.VANTA.CLOUDS({
           el: vantaRef.current,
           THREE,
           backgroundColor: 0x0,
-          skyColor: 0x888888,
-          cloudColor: 0xffffff,
+          skyColor: 0x68b8d7,
+          cloudColor: 0xadc1de,
+          cloudShadowColor: 0x183550,
+          sunColor: 0xff9919,
+          sunGlareColor: 0xff6633,
+          sunlightColor: 0xff9933,
           texturePath: `${imageFolder}/noise.webp`,
           speed: 0.8,
         })

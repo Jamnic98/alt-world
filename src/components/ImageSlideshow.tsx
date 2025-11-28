@@ -71,7 +71,7 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
         {doubled.map((img, i) => (
           <div
             key={i}
-            className="flex-shrink-0 relative h-72 w-auto flex items-center justify-center px-2"
+            className="shrink-0 relative h-72 w-auto flex items-center justify-center px-2"
           >
             <Image
               src={img.src}

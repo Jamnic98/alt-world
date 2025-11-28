@@ -3,20 +3,14 @@ import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa'
 
 import { NavLink } from '@/components'
-import { imageFolder } from '@/constants'
 
-type HeaderVariant = 'light' | 'dark'
 interface HeaderProps {
-  variant: HeaderVariant
+  logoSrc: string
   instagramUrl: string
 }
 
-const Header: React.FC<HeaderProps> = ({ variant, instagramUrl }) => {
-  const textColor = variant === 'light' ? 'text-black' : 'text-white'
-  const logoSrc =
-    variant === 'light'
-      ? `${imageFolder}/logos/alt_world.webp`
-      : `${imageFolder}/logos/alt_studio.webp`
+const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
+  const textColor = 'text-white'
 
   return (
     <header

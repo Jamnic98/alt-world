@@ -2,22 +2,52 @@
 
 import Image from 'next/image'
 import { Header, ImageSlideshow } from '@/components'
-import { imageFolder, PLATFORM_SLIDESHOW_IMAGES, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
+import {
+  imageFolder,
+  videoFolder,
+  PLATFORM_SLIDESHOW_IMAGES,
+  WE_ARE_ALT_WORLD_INSTAGRAM,
+} from '@/constants'
 
 const PlatformPage = () => {
   return (
     <div>
-      <Header variant="light" instagramUrl={WE_ARE_ALT_WORLD_INSTAGRAM} />
-
+      <Header
+        logoSrc={`${imageFolder}/logos/alt_world.webp`}
+        instagramUrl={WE_ARE_ALT_WORLD_INSTAGRAM}
+      />
       <section className="relative min-h-screen flex flex-col justify-between items-center px-6 md:px-16 py-16 overflow-hidden">
-        {/* Middle content: text + phone mockup */}
-        <div className="flex flex-col justify-center flex-grow items-center space-y-12 w-full max-w-4xl text-center px-4 md:px-0 pt-16 pb-8">
-          {/* Text */}
-          <div className="space-y-6 max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-black">
-              OUR PLATFORM
-            </h1>
-            <p className="text-lg font-light leading-relaxed text-black-400">
+        {/* Background video */}
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={`${videoFolder}/platform_page_bg_video.mp4`} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-black/60 z-10" />
+
+        {/* Text Content */}
+        <div className="relative z-20 max-w-4xl text-center space-y-6 grow flex flex-col justify-center items-center">
+          <Image
+            src={`${imageFolder}/our_platform.webp`}
+            alt="Our Platform Title"
+            width={500}
+            height={100}
+          />
+          <div className="space-y-6 max-w-3xl mx-auto text-white">
+            <p className="tracking-[0.5em] text-white font-bold leading-relaxed max-w-2xl mx-auto border-t border-white pt-4">
+              ACCESS&nbsp;&nbsp;<span className="text-2xl font-light">|</span>&nbsp;&nbsp;
+              INNOVATION&nbsp;&nbsp;<span className="text-2xl font-light">|</span>
+              &nbsp;&nbsp;SPOTLIGHTING
+            </p>
+
+            <p className="text-lg font-light leading-relaxed text-white">
               ALT WORLD is a global platform empowering POC fashion creatives and championing
               underrepresented talent. We make the exclusive inclusive through panel events,
               knowledge exchange, digital spotlights, and brand partnerships focused on amplifying
@@ -25,25 +55,13 @@ const PlatformPage = () => {
             </p>
           </div>
 
-          {/* Phone mockup */}
-          <div className="relative w-full max-w-[200px] sm:max-w-[250px] md:max-w-[300px] lg:max-w-[350px] mx-auto">
-            <Image
-              src={`${imageFolder}/alt-deck.webp`}
-              alt="iPhone mockup"
-              width={300}
-              height={600}
-              className="w-full h-auto object-contain"
-              priority
-            />
-          </div>
-
           {/* Caption */}
-          <p className="text-sm font-semibold leading-relaxed">
+          <p className="text-sm font-semibold leading-relaxed text-white">
             #ALTWorld #MakingExclusiveInclusive
           </p>
         </div>
         {/* Slideshow pinned at bottom */}
-        <div className="w-full mt-8">
+        <div className="w-full z-20">
           <ImageSlideshow images={PLATFORM_SLIDESHOW_IMAGES} />
         </div>
       </section>
