@@ -1,4 +1,4 @@
-const imageFolder = '/images/slideshow/polo-beach'
+const imageFolder = '/images/slideshow/soho-fashion-insights'
 
 const imageSrcList = [
   { src: `${imageFolder}/01.webp`, alt: '' },
@@ -29,11 +29,11 @@ const imageSrcList = [
   { src: `${imageFolder}/26.webp`, alt: '' },
 ]
 
-const poloBeachRunwayCaseStudy = {
-  title: 'Polo Beach Runway — January 2023',
+const sohoFashionInsights = {
+  title: 'Fashion Insights x Soho House — 2025',
   description:
-    'As part of our ALT World: Accra Edition, we curated a designer runway takeover at Polo Beach Club, spotlighting the same lineup of visionary Ghanaian brands. This initiative championed accessibility and inclusivity within Ghana’s luxury fashion spaces  demonstrating that cultural expression, talent and community belong everywhere. The runway served as a celebration of emerging African expression and the rising creative movement across the continent. Produced by altworld.',
+    'Our 2025 edition in collaboration with Soho House continued our mission to make exclusivity accessible. Our panel featured leading voices shaping global youth culture, including Briana Wilson (MATTE Brand), Tommy AKÁ, Guape Studio, Ronke Olukoga, Yana Eden, Vivian Osunde (Girls Girls Trip), Naomi Wilson, Leonisa Nsiah, Celine Adjiman (Dr. Martens), and Faye Gaggianeri (formerly Converse). Through intimate dialogue and guided workshops, we fostered cross-industry connection and creative empowerment in partnership with one of the world’s most influential cultural hubs.',
   imageSrcList,
 }
 
-export default poloBeachRunwayCaseStudy
+export default sohoFashionInsights

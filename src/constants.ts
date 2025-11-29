@@ -1,9 +1,9 @@
 import {
-  jamesonCaseStudy,
-  poloBeachRunwayCaseStudy,
-  ghanaFashionInsightsCaseStudy,
-  sohoHouseFashionInsightsCaseStudy,
-  genZCarnivalCaseStudy,
+  jameson,
+  poloBeachRunway,
+  ghanaFashionInsights,
+  sohoFashionInsights,
+  genZCarnival,
 } from '@/data/caseStudies'
 
 export const WE_ARE_ALT_WORLD_INSTAGRAM = 'https://www.instagram.com/wearealtworld/?hl=en-gb'
@@ -154,9 +154,9 @@ export const PLATFORM_SLIDESHOW_IMAGES = [
 ]
 
 export const caseStudies = [
-  jamesonCaseStudy,
-  poloBeachRunwayCaseStudy,
-  ghanaFashionInsightsCaseStudy,
-  sohoHouseFashionInsightsCaseStudy,
-  genZCarnivalCaseStudy,
+  jameson,
+  poloBeachRunway,
+  ghanaFashionInsights,
+  sohoFashionInsights,
+  genZCarnival,
 ]
