@@ -1,8 +1,9 @@
 'use client'
 
 import Image from 'next/image'
-import { Header } from '@/components'
-import { imageFolder, videoFolder, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
+
+import { CaseStudy, Header } from '@/components'
+import { caseStudies, imageFolder, videoFolder, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
 
 const PlatformPage = () => {
   return (
@@ -41,7 +42,7 @@ const PlatformPage = () => {
             </p>
 
             <p className="text-lg font-light leading-relaxed text-white">
-              ALT WORLD is a global platform empowering POC fashion creatives and championing
+              Alt World is a global platform empowering POC fashion creatives and championing
               underrepresented talent. We make the exclusive inclusive through panel events,
               knowledge exchange, digital spotlights, and brand partnerships focused on amplifying
               next-gen voices across fashion, culture, and community.
@@ -53,6 +54,11 @@ const PlatformPage = () => {
             #ALTWorld #MakingExclusiveInclusive
           </p>
         </div>
+      </section>
+      <section>
+        {caseStudies.map((caseStudy) => (
+          <CaseStudy key={caseStudy.title} {...caseStudy} />
+        ))}
       </section>
     </div>
   )

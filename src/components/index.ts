@@ -1,3 +1,4 @@
+export { default as CaseStudy } from './CaseStudy'
 export { default as Footer } from './Footer'
 export { default as FooterCopyright } from './FooterCopyright'
 export { default as ImageSlideshow } from './ImageSlideshow'

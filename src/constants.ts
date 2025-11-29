@@ -1,3 +1,11 @@
+import {
+  jamesonCaseStudy,
+  poloBeachRunwayCaseStudy,
+  ghanaFashionInsightsCaseStudy,
+  sohoHouseFashionInsightsCaseStudy,
+  genZCarnivalCaseStudy,
+} from '@/data/caseStudies'
+
 export const WE_ARE_ALT_WORLD_INSTAGRAM = 'https://www.instagram.com/wearealtworld/?hl=en-gb'
 export const WE_ARE_ALT_STUDIO_INSTAGRAM = 'https://www.instagram.com/wearealtstudios/?hl=en-gb'
 
@@ -143,4 +151,12 @@ export const PLATFORM_SLIDESHOW_IMAGES = [
   { src: `${platformSlideshowFolder}/48.webp`, alt: '' },
   { src: `${platformSlideshowFolder}/49.webp`, alt: '' },
   { src: `${platformSlideshowFolder}/50.webp`, alt: '' },
+]
+
+export const caseStudies = [
+  jamesonCaseStudy,
+  poloBeachRunwayCaseStudy,
+  ghanaFashionInsightsCaseStudy,
+  sohoHouseFashionInsightsCaseStudy,
+  genZCarnivalCaseStudy,
 ]

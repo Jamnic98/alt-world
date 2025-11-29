@@ -34,7 +34,8 @@ const MailingListForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full gap-3">
-      {/* First row: First + Last Name */}
+      <h1 className="text-xl font-semibold mb-2">Join our Mailing List</h1>
+
       <div className="flex flex-col sm:flex-row gap-2 w-full">
         <input
           type="text"

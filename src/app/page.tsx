@@ -25,9 +25,9 @@ export default function HomePage() {
           >
             <Image
               src={`${imageFolder}/titles/altworld_stacked.webp`}
-              alt="AltWorld stacked"
-              width={800}
-              height={800}
+              alt="Alt World - Click to Enter"
+              width={600}
+              height={600}
               className="rounded-lg shadow-lg"
             />
           </motion.div>
@@ -46,7 +46,7 @@ export default function HomePage() {
               >
                 <Image
                   src={`${imageFolder}/titles/platform.webp`}
-                  alt="Platform"
+                  alt="Platform Page Link"
                   width={500}
                   height={300}
                   className="rounded-lg shadow-lg"
@@ -58,7 +58,7 @@ export default function HomePage() {
               >
                 <Image
                   src={`${imageFolder}/titles/studio.webp`}
-                  alt="Studio"
+                  alt="Studio Page Link"
                   width={400}
                   height={300}
                   className="rounded-lg shadow-lg"

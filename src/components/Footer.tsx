@@ -24,7 +24,11 @@ const Footer = () => {
           <h3 className="text-xl font-semibold mb-4">Contact</h3>
           <p>
             Email:{' '}
-            <a href="mailto:hello@altworld.net" className="hover:text-white transition-colors">
+            <a
+              href="mailto:hello@altworld.net"
+              target="_blank"
+              className="hover:text-white transition-colors"
+            >
               hello@altworld.net
             </a>
           </p>
