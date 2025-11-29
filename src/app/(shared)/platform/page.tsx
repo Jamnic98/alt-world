@@ -1,13 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { Header, ImageSlideshow } from '@/components'
-import {
-  imageFolder,
-  videoFolder,
-  PLATFORM_SLIDESHOW_IMAGES,
-  WE_ARE_ALT_WORLD_INSTAGRAM,
-} from '@/constants'
+import { Header } from '@/components'
+import { imageFolder, videoFolder, WE_ARE_ALT_WORLD_INSTAGRAM } from '@/constants'
 
 const PlatformPage = () => {
   return (
@@ -28,10 +23,8 @@ const PlatformPage = () => {
           <source src={`${videoFolder}/platform_page_bg_video.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/60 z-10" />
-
         {/* Text Content */}
         <div className="relative z-20 max-w-4xl text-center space-y-6 grow flex flex-col justify-center items-center">
           <Image
@@ -59,10 +52,6 @@ const PlatformPage = () => {
           <p className="text-sm font-semibold leading-relaxed text-white">
             #ALTWorld #MakingExclusiveInclusive
           </p>
-        </div>
-        {/* Slideshow pinned at bottom */}
-        <div className="w-full mt-8 z-20">
-          <ImageSlideshow images={PLATFORM_SLIDESHOW_IMAGES} />
         </div>
       </section>
     </div>

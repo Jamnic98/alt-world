@@ -4,17 +4,17 @@ import { usePathname } from 'next/navigation'
 
 interface NavLinkProps {
   href: string
-  label: string
+  children: React.ReactNode
 }
 
-const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   const pathname = usePathname()
   const isActive = pathname === href
 
   return (
     <Link
       href={href}
-      className={`
+      className={`pb-4 px-4
         relative transition-colors font-semibold tracking-widest
         after:block after:absolute after:bottom-0 after:left-1/2 after:h-[2px] after:w-0 after:bg-current
         after:transition-all after:duration-300
@@ -23,7 +23,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, label }) => {
         after:-translate-x-1/2
       `}
     >
-      {label}
+      {children}
     </Link>
   )
 }

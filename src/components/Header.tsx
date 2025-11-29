@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa'
 
 import { NavLink } from '@/components'
+import { imageFolder } from '@/constants'
 
 interface HeaderProps {
   logoSrc: string
@@ -24,8 +25,22 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
       </Link>
 
       <nav className="mx-4 flex gap-8 sm:gap-12 md:gap-24 text-sm sm:text-lg md:text-xl font-medium">
-        <NavLink href="/platform" label="PLATFORM" />
-        <NavLink href="/studio" label="STUDIO" />
+        <NavLink href="/platform">
+          <Image
+            src={`${imageFolder}/titles/platform.webp`}
+            alt="platform page link"
+            width={105}
+            height={50}
+          />
+        </NavLink>
+        <NavLink href="/studio">
+          <Image
+            src={`${imageFolder}/titles/studio.webp`}
+            alt="studio page link"
+            width={80}
+            height={50}
+          />
+        </NavLink>
       </nav>
 
       <a

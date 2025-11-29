@@ -1,35 +1,73 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
-export default function HomePage() {
-  return (
-    <div className="relative w-full h-dvh ">
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-24 z-20 -translate-y-28"
-        >
-          <a
-            href="/studio"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
-             transform transition-transform duration-200 hover:scale-105"
-          >
-            STUDIO
-          </a>
+import { VantaBackground } from '@/components'
+import { imageFolder } from '@/constants'
 
-          <a
-            href="/platform"
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-widest cursor-pointer select-none 
-             transform transition-transform duration-200 hover:scale-105"
+export default function HomePage() {
+  const [clicked, setClicked] = useState(false)
+
+  return (
+    <div className="relative w-full h-dvh flex flex-col items-center justify-center z-20">
+      <VantaBackground />
+
+      <div className="z-20 flex flex-col items-center justify-center gap-12 -mt-12">
+        {!clicked ? (
+          <motion.div
+            initial={{ scale: 1 }}
+            whileHover={{ scale: 1.05 }}
+            onClick={() => setClicked(true)}
+            className="cursor-pointer select-none"
           >
-            PLATFORM
-          </a>
-        </motion.div>
-      </AnimatePresence>
+            <Image
+              src={`${imageFolder}/titles/altworld_stacked.webp`}
+              alt="AltWorld stacked"
+              width={800}
+              height={800}
+              className="rounded-lg shadow-lg"
+            />
+          </motion.div>
+        ) : (
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7 }}
+              className="flex flex-col md:flex-row gap-60 items-center justify-center"
+            >
+              <Link
+                href="/platform"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105"
+              >
+                <Image
+                  src={`${imageFolder}/titles/platform.webp`}
+                  alt="Platform"
+                  width={500}
+                  height={300}
+                  className="rounded-lg shadow-lg"
+                />
+              </Link>
+              <Link
+                href="/studio"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105"
+              >
+                <Image
+                  src={`${imageFolder}/titles/studio.webp`}
+                  alt="Studio"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-lg"
+                />
+              </Link>
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </div>
     </div>
   )
 }

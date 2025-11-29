@@ -3,8 +3,6 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
-import { imageFolder } from '@/constants'
-
 declare global {
   interface Window {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,21 +21,17 @@ export default function VantaBackground() {
     window.THREE = THREE
 
     const script = document.createElement('script')
-    script.src = '/js/vanta.clouds2.min.js'
+    script.src = '/js/vanta.net.min.js'
     script.onload = () => {
-      if (vantaRef.current && window.VANTA?.CLOUDS) {
-        effectRef.current = window.VANTA.CLOUDS({
+      if (vantaRef.current && window.VANTA?.NET) {
+        effectRef.current = window.VANTA.NET({
           el: vantaRef.current,
           THREE,
           backgroundColor: 0x0,
-          skyColor: 0x68b8d7,
-          cloudColor: 0xadc1de,
-          cloudShadowColor: 0x183550,
-          sunColor: 0xff9919,
-          sunGlareColor: 0xff6633,
-          sunlightColor: 0xff9933,
-          texturePath: `${imageFolder}/noise.webp`,
-          speed: 0.8,
+          color: 0xffff00,
+          points: 20,
+          spacing: 18,
+          maxDistance: 20,
         })
       }
     }
