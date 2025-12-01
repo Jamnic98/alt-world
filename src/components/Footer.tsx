@@ -37,7 +37,7 @@ const Footer = () => {
 
         {/* Mailing list */}
         <div>
-          <MailingListForm />
+          <MailingListForm title="Join the Family!" />
         </div>
       </div>
 

@@ -24,10 +24,12 @@ const PlatformPage = () => {
           <source src={`${videoFolder}/platform_page_bg_video.mp4`} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
+
         {/* Dark overlay for readability */}
         <div className="absolute inset-0 bg-black/60 z-10" />
+
         {/* Text Content */}
-        <div className="relative z-20 max-w-4xl text-center space-y-6 grow flex flex-col justify-center items-center">
+        <div className="relative z-20 mt-16 max-w-2xl text-center space-y-6 grow flex flex-col justify-center items-center">
           <Image
             src={`${imageFolder}/our_platform.webp`}
             alt="Our Platform Title"

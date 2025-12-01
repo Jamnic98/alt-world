@@ -26,20 +26,26 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
 
       <nav className="mx-4 flex gap-8 sm:gap-12 md:gap-24 text-sm sm:text-lg md:text-xl font-medium">
         <NavLink href="/platform">
-          <Image
-            src={`${imageFolder}/titles/platform.webp`}
-            alt="platform page link"
-            width={105}
-            height={50}
-          />
+          <div className="w-[105px] h-[50px] relative shrink-0">
+            <Image
+              src={`${imageFolder}/titles/platform.webp`}
+              alt="platform page link"
+              fill
+              style={{ objectFit: 'contain' }}
+              priority
+            />
+          </div>
         </NavLink>
         <NavLink href="/studio">
-          <Image
-            src={`${imageFolder}/titles/studio.webp`}
-            alt="studio page link"
-            width={80}
-            height={50}
-          />
+          <div className="w-20 h-[50px] relative shrink-0">
+            <Image
+              src={`${imageFolder}/titles/studio.webp`}
+              alt="studio page link"
+              fill
+              style={{ objectFit: 'contain' }}
+              priority
+            />
+          </div>
         </NavLink>
       </nav>
 
@@ -50,7 +56,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
         className={'ml-8'}
         aria-label="Visit our studio Instagram"
       >
-        <FaInstagram size={28} />
+        <FaInstagram size={34} />
       </a>
     </header>
   )

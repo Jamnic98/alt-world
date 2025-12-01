@@ -2,39 +2,51 @@
 
 import { useState } from 'react'
 
-const MailingListForm = () => {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [email, setEmail] = useState('')
-  const [, setSuccess] = useState(false)
-  const [loading, setLoading] = useState(false)
+interface MailingListFormProps {
+  title?: string
+}
+
+const MailingListForm = ({ title }: MailingListFormProps) => {
+  const [firstName, setFirstName] = useState<string>('')
+  const [lastName, setLastName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [success, setSuccess] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!firstName || !lastName || !email) return
 
     setLoading(true)
-    const res = await fetch('/api/waitlist', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ firstName, lastName, email }),
-    })
+    try {
+      const res = await fetch('/api/mailingList', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email }),
+      })
 
-    setLoading(false)
-    if (res.ok) {
-      setSuccess(true)
-      setFirstName('')
-      setLastName('')
-      setEmail('')
-      setTimeout(() => setSuccess(false), 3000)
-    } else {
+      if (res.ok) {
+        setSuccess(true)
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setTimeout(() => setSuccess(false), 3000)
+      } else {
+        setSuccess(false)
+      }
+    } catch (err) {
       setSuccess(false)
+      console.error(err)
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full gap-3">
-      <h1 className="text-xl font-semibold mb-2">Join our Mailing List</h1>
+      {title && <h1 className="text-xl font-semibold mb-2">{title}</h1>}
+
+      {success && <p className="text-green-400">Successfully joined!</p>}
 
       <div className="flex flex-col sm:flex-row gap-2 w-full">
         <input
@@ -55,7 +67,6 @@ const MailingListForm = () => {
         />
       </div>
 
-      {/* Second row: Email + Button */}
       <div className="flex flex-col sm:flex-row gap-2 w-full">
         <input
           type="email"
@@ -68,7 +79,7 @@ const MailingListForm = () => {
         <button
           type="submit"
           disabled={loading}
-          className="flex-shrink-0 w-full sm:w-auto px-6 py-2 rounded-md bg-amber-400 hover:bg-amber-500 cursor-pointer text-white font-semibold transition disabled:opacity-50"
+          className="shrink-0 w-full sm:w-auto px-6 py-2 rounded-md bg-amber-400 hover:bg-amber-500 cursor-pointer text-white font-semibold transition disabled:opacity-50"
         >
           {loading ? 'Joining...' : 'Join'}
         </button>

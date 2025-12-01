@@ -19,10 +19,10 @@ export const POST = async (req: Request) => {
 
     const client = await clientPromise
     const db = client.db('altworld_database')
-    const waitlist = db.collection('mailing_list')
+    const mailingList = db.collection('mailing_list')
 
     // avoid duplicates by email
-    await waitlist.updateOne(
+    await mailingList.updateOne(
       { email },
       {
         $setOnInsert: {
