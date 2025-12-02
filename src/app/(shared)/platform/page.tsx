@@ -29,17 +29,21 @@ const PlatformPage = () => {
         <div className="absolute inset-0 bg-black/60 z-10" />
 
         {/* Text Content */}
-        <div className="relative z-20 mt-16 max-w-2xl text-center space-y-6 grow flex flex-col justify-center items-center">
+        <div className="relative z-20 mt-12 max-w-2xl text-center space-y-6 grow flex flex-col justify-center items-center px-4">
           <Image
             src={`${imageFolder}/our_platform.webp`}
             alt="Our Platform Title"
             width={500}
             height={100}
+            className="w-68 sm:w-72 md:w-[500px] h-auto"
           />
-          <div className="space-y-6 max-w-3xl mx-auto text-white">
-            <p className="tracking-[0.5em] text-white font-bold leading-relaxed max-w-2xl mx-auto border-t border-white pt-4">
-              ACCESS&nbsp;&nbsp;<span className="text-2xl font-light">|</span>&nbsp;&nbsp;
-              INNOVATION&nbsp;&nbsp;<span className="text-2xl font-light">|</span>
+
+          <div className="space-y-8 max-w-4xl mx-auto text-white">
+            <p className="tracking-[0.3em] text-white font-bold leading-relaxed max-w-2xl mx-auto border-t border-white pt-4 text-xs sm:text-sm md:text-base">
+              ACCESS&nbsp;&nbsp;
+              <span className="text-lg sm:text-xl font-light">|</span>
+              &nbsp;&nbsp;INNOVATION&nbsp;&nbsp;
+              <span className="text-lg sm:text-xl font-light">|</span>
               &nbsp;&nbsp;SPOTLIGHTING
             </p>
 

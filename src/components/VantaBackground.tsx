@@ -30,7 +30,7 @@ export default function VantaBackground() {
           backgroundColor: 0x0,
           color: 0xffff00,
           points: 20,
-          spacing: 18,
+          spacing: 20,
           maxDistance: 20,
         })
       }

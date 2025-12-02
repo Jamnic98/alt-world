@@ -15,7 +15,7 @@ export default function SharedLayout({ children }: { children: React.ReactNode }
       const timer = setTimeout(() => {
         setShowPopup(true)
         sessionStorage.setItem('mailingPopupShown', 'true')
-      }, 3000) // delay popup by 3s
+      }, 8000) // delay popup by 8s
       return () => clearTimeout(timer)
     }
   }, [pathname])
@@ -23,10 +23,10 @@ export default function SharedLayout({ children }: { children: React.ReactNode }
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1 bg-gray-800">{children}</main>
-      <Footer />
 
       {/* Mailing list popup */}
       {showPopup && <MailingListPopup open={showPopup} onClose={() => setShowPopup(false)} />}
+      <Footer />
     </div>
   )
 }

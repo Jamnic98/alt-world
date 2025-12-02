@@ -36,7 +36,7 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}
             transition={{ duration: 0.3 }}
-            className="bg-gray-900 rounded-lg p-6 max-w-md w-full text-white relative"
+            className="bg-gray-900 rounded-lg p-6 max-w-md w-full text-white relative mx-8"
           >
             {/* Close button */}
             <button
@@ -53,7 +53,6 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
               incididunt ut labore et dolore magna aliqua.
             </p>
 
-            {/* Mailing list form */}
             <MailingListForm />
           </motion.div>
         </motion.div>

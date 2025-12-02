@@ -16,47 +16,58 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
   return (
     <header
       className={`
-        absolute top-0 w-full py-4 px-4 flex items-center justify-between z-50
+        absolute top-0 w-full py-3 px-4 flex items-center justify-between z-50
         bg-transparent ${textColor}
       `}
     >
+      {/* Logo */}
       <Link href="/" className="flex items-center mx-2">
-        <Image src={logoSrc} alt="AltWorld Logo" width={80} height={80} priority />
+        <Image
+          src={logoSrc}
+          alt="AltWorld Logo"
+          width={80}
+          height={80}
+          priority
+          className="w-14 h-auto sm:w-16 md:w-20"
+        />
       </Link>
 
-      <nav className="mx-4 flex gap-8 sm:gap-12 md:gap-24 text-sm sm:text-lg md:text-xl font-medium">
+      {/* Nav */}
+      <nav className="mx-2 flex gap-4 sm:gap-8 md:gap-16 text-xs sm:text-sm md:text-lg font-medium">
         <NavLink href="/platform">
-          <div className="w-[105px] h-[50px] relative shrink-0">
+          <div className="relative shrink-0 w-20 sm:w-[105px] h-8 sm:h-[50px]">
             <Image
               src={`${imageFolder}/titles/platform.webp`}
               alt="platform page link"
               fill
-              style={{ objectFit: 'contain' }}
+              className="object-contain"
               priority
             />
           </div>
         </NavLink>
+
         <NavLink href="/studio">
-          <div className="w-20 h-[50px] relative shrink-0">
+          <div className="relative shrink-0 w-16 sm:w-20 h-8 sm:h-[50px]">
             <Image
               src={`${imageFolder}/titles/studio.webp`}
               alt="studio page link"
               fill
-              style={{ objectFit: 'contain' }}
+              className="object-contain"
               priority
             />
           </div>
         </NavLink>
       </nav>
 
+      {/* Instagram */}
       <a
         href={instagramUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={'ml-8'}
+        className="ml-4"
         aria-label="Visit our studio Instagram"
       >
-        <FaInstagram size={34} />
+        <FaInstagram className="text-white w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" />
       </a>
     </header>
   )
