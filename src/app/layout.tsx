@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 
+import Head from 'next/head'
 import { Geist, Geist_Mono } from 'next/font/google'
 
 import '@/styles/tailwind.css'
@@ -24,6 +25,9 @@ const RootLayout = ({
   children: React.ReactNode
 }>) => (
   <html lang="en">
+    <Head>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
     <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
   </html>
 )
