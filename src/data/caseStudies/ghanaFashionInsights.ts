@@ -1,21 +1,21 @@
 const imageFolder = '/images/slideshow/ghana-fashion-insights'
 
 const imageSrcList = [
-  { src: `${imageFolder}/01.webp`, alt: '' },
-  { src: `${imageFolder}/02.webp`, alt: '' },
-  { src: `${imageFolder}/03.webp`, alt: '' },
-  { src: `${imageFolder}/04.webp`, alt: '' },
-  { src: `${imageFolder}/05.webp`, alt: '' },
-  { src: `${imageFolder}/06.webp`, alt: '' },
-  { src: `${imageFolder}/07.webp`, alt: '' },
-  { src: `${imageFolder}/08.webp`, alt: '' },
-  { src: `${imageFolder}/09.webp`, alt: '' },
-  { src: `${imageFolder}/10.webp`, alt: '' },
-  { src: `${imageFolder}/11.webp`, alt: '' },
-  { src: `${imageFolder}/12.webp`, alt: '' },
-  { src: `${imageFolder}/13.webp`, alt: '' },
-  { src: `${imageFolder}/14.webp`, alt: '' },
-  { src: `${imageFolder}/15.webp`, alt: '' },
+  { src: `${imageFolder}/01.webp` },
+  { src: `${imageFolder}/02.webp` },
+  { src: `${imageFolder}/03.webp` },
+  { src: `${imageFolder}/04.webp` },
+  { src: `${imageFolder}/05.webp` },
+  { src: `${imageFolder}/06.webp` },
+  { src: `${imageFolder}/07.webp` },
+  { src: `${imageFolder}/08.webp` },
+  { src: `${imageFolder}/09.webp` },
+  { src: `${imageFolder}/10.webp` },
+  { src: `${imageFolder}/11.webp` },
+  { src: `${imageFolder}/12.webp` },
+  { src: `${imageFolder}/13.webp` },
+  { src: `${imageFolder}/14.webp` },
+  { src: `${imageFolder}/15.webp` },
 ]
 
 const ghanaFashionInsights = {

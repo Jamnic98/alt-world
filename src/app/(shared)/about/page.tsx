@@ -5,7 +5,7 @@ import { imageFolder } from '@/constants'
 
 export default function AboutPage() {
   return (
-    <div className="flex justify-center py-8">
+    <div className="flex justify-center p-8">
       <div className="max-w-4xl w-full px-6 md:px-0 flex flex-col gap-8">
         <div className="flex justify-center items-center py-16">
           <Link
@@ -18,6 +18,9 @@ export default function AboutPage() {
               alt="AltWorld"
               width={500}
               height={500}
+              placeholder="empty"
+              priority
+              className="object-contain"
             />
           </Link>
         </div>

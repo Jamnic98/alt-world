@@ -22,7 +22,7 @@ export default function SharedLayout({ children }: { children: React.ReactNode }
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 bg-gray-800">{children}</main>
+      <main className="flex-1 bg-black">{children}</main>
 
       {/* Mailing list popup */}
       {showPopup && <MailingListPopup open={showPopup} onClose={() => setShowPopup(false)} />}

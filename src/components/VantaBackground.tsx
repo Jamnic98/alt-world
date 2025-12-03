@@ -32,6 +32,8 @@ export default function VantaBackground() {
           points: 20,
           spacing: 20,
           maxDistance: 20,
+          minHeight: 0,
+          minWidth: 0,
         })
       }
     }
@@ -43,5 +45,5 @@ export default function VantaBackground() {
     }
   }, [])
 
-  return <div ref={vantaRef} className="absolute inset-0 z-0 w-full h-full" />
+  return <div className="fixed top-0 left-0 w-screen h-screen z-0" ref={vantaRef} />
 }

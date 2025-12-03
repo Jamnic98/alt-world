@@ -5,7 +5,7 @@ import { imageFolder } from '@/constants'
 
 export default function PrivacyPage() {
   return (
-    <div className="flex justify-center py-12">
+    <div className="flex justify-center py-12 px-8">
       <div className="max-w-6xl w-full px-6 md:px-0 flex flex-col gap-10">
         <div className="flex justify-center items-center py-8">
           <Link
@@ -18,6 +18,9 @@ export default function PrivacyPage() {
               alt="AltWorld"
               width={500}
               height={500}
+              placeholder="empty"
+              priority
+              className="object-contain"
             />
           </Link>
         </div>

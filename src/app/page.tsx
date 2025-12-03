@@ -49,54 +49,55 @@ export default function HomePage() {
       </AnimatePresence>
 
       {/* Main content */}
-      <div className="z-20 flex flex-col items-center justify-center gap-12 -mt-12">
+      <div className="z-20 flex flex-col items-center justify-center gap-12">
         {!clicked ? (
           <motion.div
             initial={{ scale: 1 }}
             whileHover={{ scale: 1.05 }}
             onClick={() => setClicked(true)}
-            className="cursor-pointer select-none px-8"
+            className="cursor-pointer select-none px-8 w-full max-w-[800px]"
           >
             <Image
               src={`${imageFolder}/titles/altworld_stacked.webp`}
               alt="Alt World - Click to Enter"
-              width={600}
+              width={800}
               height={600}
-              className="rounded-lg shadow-lg"
-              onLoad={handleImageLoad} // loader hides when image is ready
+              className="rounded-lg shadow-lg w-full h-auto max-h-[80vh] object-contain"
+              onLoad={handleImageLoad}
             />
           </motion.div>
         ) : (
           <AnimatePresence>
+            {/* Platform / Studio links */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col md:flex-row gap-60 items-center justify-center px-8"
+              className="flex flex-col xl:flex-row gap-30 xl:gap-50 items-center justify-center pxw-full"
             >
               <Link
                 href="/platform"
-                className="cursor-pointer transform transition-transform duration-200 hover:scale-105"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full md:w-[500px]"
               >
                 <Image
                   src={`${imageFolder}/titles/platform.webp`}
                   alt="Platform Page Link"
                   width={500}
                   height={300}
-                  className="rounded-lg shadow-lg"
+                  className="rounded-lg shadow-lg w-full h-auto object-contain"
                 />
               </Link>
               <Link
                 href="/studio"
-                className="cursor-pointer transform transition-transform duration-200 hover:scale-105"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full md:w-[400px]"
               >
                 <Image
                   src={`${imageFolder}/titles/studio.webp`}
                   alt="Studio Page Link"
                   width={400}
                   height={300}
-                  className="rounded-lg shadow-lg"
+                  className="rounded-lg shadow-lg w-full h-auto object-contain"
                 />
               </Link>
             </motion.div>
