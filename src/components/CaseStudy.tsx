@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import { ImageSlideshow } from '@/components'
 
 interface CaseStudyProps {
@@ -8,10 +10,20 @@ interface CaseStudyProps {
 
 const CaseStudy: React.FC<CaseStudyProps> = ({ title, description, imageSrcList }) => {
   return (
-    <div className="flex flex-col gap-10 py-12 max-w-5xl mx-auto px-6">
-      <h1 className="text-3xl md:text-4xl font-extrabold text-white">{title}</h1>
+    <div className="flex flex-col max-w-5xl gap-10 px-6 py-12 mx-auto">
+      {/* <h1 className="text-3xl font-extrabold text-white md:text-4xl">{title}</h1> */}
 
-      <p className="text-base md:text-lg text-gray-300 leading-relaxed">{description}</p>
+      <Image
+        src={title}
+        alt=""
+        width={200}
+        height={200}
+        placeholder="empty"
+        priority
+        className="object-contain"
+      />
+
+      <p className="text-base leading-relaxed text-gray-300 md:text-lg">{description}</p>
 
       <ImageSlideshow images={imageSrcList} />
     </div>

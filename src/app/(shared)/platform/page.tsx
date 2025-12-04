@@ -12,10 +12,10 @@ const PlatformPage = () => {
         logoSrc={`${imageFolder}/logos/alt_world.webp`}
         instagramUrl={WE_ARE_ALT_WORLD_INSTAGRAM}
       />
-      <section className="relative min-h-screen flex flex-col justify-between items-center px-6 md:px-16 py-16 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-between min-h-screen px-6 py-16 overflow-hidden md:px-16">
         {/* Background video */}
         <video
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          className="absolute top-0 left-0 z-0 object-cover w-full h-full"
           autoPlay
           muted
           loop
@@ -26,10 +26,10 @@ const PlatformPage = () => {
         </video>
 
         {/* Dark overlay for readability */}
-        <div className="absolute inset-0 bg-black/60 z-10" />
+        <div className="absolute inset-0 z-10 bg-black/60" />
 
         {/* Text Content */}
-        <div className="relative z-20 mt-12 max-w-2xl text-center space-y-6 grow flex flex-col justify-center items-center px-4">
+        <div className="relative z-20 flex flex-col items-center justify-center max-w-2xl px-4 mt-12 space-y-6 text-center grow">
           <Image
             src={`${imageFolder}/our_platform.webp`}
             alt="Our Platform Title"
@@ -38,12 +38,12 @@ const PlatformPage = () => {
             className="w-68 sm:w-72 md:w-[500px] h-auto"
           />
 
-          <div className="space-y-8 max-w-4xl mx-auto text-white">
+          <div className="max-w-4xl mx-auto space-y-8 text-white">
             <p className="tracking-[0.3em] text-white font-bold leading-relaxed max-w-2xl mx-auto border-t border-white pt-4 text-xs sm:text-sm md:text-base">
               ACCESS&nbsp;&nbsp;
-              <span className="text-lg sm:text-xl font-light">|</span>
+              <span className="text-lg font-light sm:text-xl">|</span>
               &nbsp;&nbsp;INNOVATION&nbsp;&nbsp;
-              <span className="text-lg sm:text-xl font-light">|</span>
+              <span className="text-lg font-light sm:text-xl">|</span>
               &nbsp;&nbsp;SPOTLIGHTING
             </p>
 
