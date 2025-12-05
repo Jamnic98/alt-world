@@ -6,7 +6,7 @@ import { imageFolder } from '@/constants'
 export default function PrivacyPage() {
   return (
     <div className="flex justify-center py-12 px-8">
-      <div className="max-w-6xl w-full px-6 md:px-0 flex flex-col gap-10">
+      <div className="max-w-4xl w-full px-6 md:px-0 flex flex-col gap-10">
         <div className="flex justify-center items-center py-8">
           <Link
             href="/"

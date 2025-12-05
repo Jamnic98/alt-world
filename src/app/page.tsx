@@ -74,11 +74,11 @@ export default function HomePage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col xl:flex-row gap-30 xl:gap-50 items-center justify-center pxw-full"
+              className="flex flex-col xl:flex-row gap-30 xl:gap-60 items-center justify-center w-full"
             >
               <Link
                 href="/platform"
-                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full md:w-[500px]"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full max-w-72 md:w-[500px]"
               >
                 <Image
                   src={`${imageFolder}/titles/platform.webp`}
@@ -90,12 +90,12 @@ export default function HomePage() {
               </Link>
               <Link
                 href="/studio"
-                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full md:w-[400px]"
+                className="cursor-pointer transform transition-transform duration-200 hover:scale-105 w-full max-w-60 md:w-[380px]"
               >
                 <Image
                   src={`${imageFolder}/titles/studio.webp`}
                   alt="Studio Page Link"
-                  width={400}
+                  width={380}
                   height={300}
                   className="rounded-lg shadow-lg w-full h-auto object-contain"
                 />

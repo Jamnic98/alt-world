@@ -1,5 +1,6 @@
 export { default as jameson } from './jameson'
-export { default as poloBeachRunway } from './poloBeachRunway'
+export { default as genZCarnival } from './genZCarnival'
 export { default as ghanaFashionInsights } from './ghanaFashionInsights'
 export { default as sohoFashionInsights } from './sohoFashionInsights'
-export { default as genZCarnival } from './genZCarnival'
+export { default as poloBeachRunway } from './poloBeachRunway'
+export { default as samsung } from './samsung'

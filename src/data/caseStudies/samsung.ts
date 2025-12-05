@@ -1,4 +1,4 @@
-const imageFolder = '/images/slideshow/jameson'
+const imageFolder = '/images/slideshow/samsung'
 
 const imageSrcList = [
   { src: `${imageFolder}/01.webp` },
@@ -17,12 +17,17 @@ const imageSrcList = [
   { src: `${imageFolder}/14.webp` },
   { src: `${imageFolder}/15.webp` },
   { src: `${imageFolder}/16.webp` },
+  { src: `${imageFolder}/17.webp` },
+  { src: `${imageFolder}/18.webp` },
+  { src: `${imageFolder}/19.webp` },
+  { src: `${imageFolder}/20.webp` },
+  { src: `${imageFolder}/21.webp` },
+  { src: `${imageFolder}/22.webp` },
+  { src: `${imageFolder}/23.webp` },
 ]
 
 const jamesonCaseStudy = {
-  title: '/images/titles/case-studies/jameson.webp',
-  description:
-    'In partnership with Jameson, we brought together the ALT Lagos creative community for a multidisciplinary cultural moment blending music, fashion and community. We partnered with rising Nigerian star Dilar to spotlight emerging talent through a vintage fashion exhibition and a styling masterclass led by Tio, with cultural leaders such as Santi in attendance. This initiative reinforced our mission to build bridges between fashion, creative expression, and youth culture across Africa.',
+  title: '/images/titles/case-studies/samsung.webp',
   imageSrcList,
 }
 

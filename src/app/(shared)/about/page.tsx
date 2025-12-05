@@ -25,7 +25,7 @@ export default function AboutPage() {
           </Link>
         </div>
 
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white">About Us</h1>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white">About Us</h1>
 
         <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
           At <span className="font-semibold text-white">Alt World</span>, we take the word platform

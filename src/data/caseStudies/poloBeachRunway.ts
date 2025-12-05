@@ -30,7 +30,7 @@ const imageSrcList = [
 ]
 
 const poloBeachRunwayCaseStudy = {
-  title: '/images/titles/altworld.webp',
+  title: '/images/titles/case-studies/polo-beach.webp',
   description:
     'As part of our ALT World: Accra Edition, we curated a designer runway takeover at Polo Beach Club, spotlighting the same lineup of visionary Ghanaian brands. This initiative championed accessibility and inclusivity within Ghana’s luxury fashion spaces  demonstrating that cultural expression, talent and community belong everywhere. The runway served as a celebration of emerging African expression and the rising creative movement across the continent. Produced by altworld.',
   imageSrcList,

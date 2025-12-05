@@ -1,15 +1,14 @@
 'use client'
 
 import Link from 'next/link'
-
 import { FooterCopyright, MailingListForm } from '@/components'
 
 const Footer = () => {
   return (
     <footer className="bg-gray-950 text-gray-200 py-12">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start gap-12">
+      <div className="max-w-6xl mx-auto px-12 flex flex-col md:flex-row justify-between items-start gap-12">
         {/* Navigation links */}
-        <div className="md:flex-[0.25] flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3 md:flex-1 min-w-[200px]">
           <h3 className="text-xl font-semibold mb-4">Explore</h3>
           <Link href="/about" className="hover:text-white transition-colors">
             About Us
@@ -20,7 +19,7 @@ const Footer = () => {
         </div>
 
         {/* Contact info */}
-        <div className="md:flex-[0.25] flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3 md:flex-1 min-w-[200px]">
           <h3 className="text-xl font-semibold mb-4">Contact</h3>
           <p>
             Email:{' '}
@@ -36,8 +35,8 @@ const Footer = () => {
         </div>
 
         {/* Mailing list */}
-        <div>
-          <MailingListForm title="Join the Family!" />
+        <div className="md:flex-1 min-w-[200px]">
+          <MailingListForm title="Join the Family" />
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
 
 interface MailingListFormProps {
@@ -7,11 +8,12 @@ interface MailingListFormProps {
 }
 
 const MailingListForm = ({ title }: MailingListFormProps) => {
-  const [firstName, setFirstName] = useState<string>('')
-  const [lastName, setLastName] = useState<string>('')
-  const [email, setEmail] = useState<string>('')
-  const [success, setSuccess] = useState<boolean>(false)
-  const [loading, setLoading] = useState<boolean>(false)
+  const [success, setSuccess] = useState(false)
+  const [loading, setLoading] = useState(false)
+
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -31,11 +33,8 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
         setLastName('')
         setEmail('')
         setTimeout(() => setSuccess(false), 3000)
-      } else {
-        setSuccess(false)
       }
     } catch (err) {
-      setSuccess(false)
       console.error(err)
     } finally {
       setLoading(false)
@@ -81,14 +80,10 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
           type="submit"
           disabled={loading}
           className="
-      basis-full
-      sm:basis-auto
-      px-6 py-2
-      rounded-md
-      bg-amber-400 hover:bg-amber-500
-      text-white font-semibold
-      transition disabled:opacity-50
-    "
+            basis-full sm:basis-auto px-6 py-2 rounded-md 
+            bg-amber-400 hover:bg-amber-500 text-white font-semibold 
+            transition disabled:opacity-50 cursor-pointer
+          "
         >
           {loading ? 'Joining...' : 'Join'}
         </button>

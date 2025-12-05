@@ -1,8 +1,9 @@
 'use client'
 
+import Image from 'next/image'
+import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { MailingListForm } from '@/components'
-import { useEffect } from 'react'
 
 interface MailingListPopupProps {
   open: boolean
@@ -47,8 +48,13 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
             </button>
 
             {/* Top paragraph */}
-            <h1 className="text-xl font-semibold mb-2">Join the Family!</h1>
-            <p className="text-white/80 mb-4">
+            <Image
+              alt="form title"
+              src="/images/titles/join-the-family.webp"
+              width={150}
+              height={50}
+            />
+            <p className="text-white/80 my-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua.
             </p>
