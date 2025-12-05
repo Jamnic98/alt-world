@@ -30,19 +30,19 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
         >
           <motion.div
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}
             transition={{ duration: 0.3 }}
-            className="bg-gray-900 rounded-lg p-6 max-w-md w-full text-white relative mx-8"
+            className="relative w-full max-w-md p-6 mx-8 text-white bg-gray-900 rounded-lg"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute top-3 right-3 text-white hover:text-amber-400 text-lg font-bold cursor-pointer"
+              className="absolute text-lg font-bold text-white cursor-pointer top-3 right-3 hover:text-amber-400"
             >
               ✕
             </button>
@@ -54,10 +54,10 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
               width={150}
               height={50}
             />
-            <p className="text-white/80 my-4">
+            {/* <p className="my-4 text-white/80">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua.
-            </p>
+            </p> */}
 
             <MailingListForm />
           </motion.div>
