@@ -14,29 +14,26 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
   const textColor = 'text-white'
 
   return (
-    <header
-      className={`
-    absolute top-0 w-full py-3 px-4 flex items-center justify-between z-50
-    bg-transparent text-white
-  `}
-    >
-      {/* Logo */}
-      <Link href="/" className="flex items-center mx-2 border-none shrink-0">
-        <Image
-          src={logoSrc}
-          alt="AltWorld Logo"
-          width={80}
-          height={80}
-          priority
-          className="h-auto w-14 sm:w-16 md:w-20 min-w-12"
-        />
-      </Link>
+    <header className="absolute top-0 z-50 flex items-center justify-center w-full px-4 pt-3 text-white bg-transparent">
+      {/* Logo  */}
+      <div className="absolute flex items-center left-4 shrink-0">
+        <Link href="/">
+          <Image
+            src={logoSrc}
+            alt="AltWorld Logo"
+            width={459}
+            height={305}
+            priority
+            className="w-16 h-auto sm:w-20 md:w-24"
+          />
+        </Link>
+      </div>
 
-      {/* Nav: centred */}
-      <nav className="flex justify-center flex-1 mx-2">
-        <div className="flex gap-8 sm:gap-16 md:gap-24 lg:gap-32">
+      {/* Nav - fully centred */}
+      <nav className="flex justify-center flex-1">
+        <div className="flex gap-6 sm:gap-8 md:gap-24 lg:gap-36 xl:gap-48">
           <NavLink href="/platform">
-            <div className="relative shrink-0 w-[60px] sm:w-[105px] md:w-[140px] h-8 sm:h-[50px] min-w-[50px]">
+            <div className="relative w-[50px] sm:w-[95px] md:w-[140px] h-8 sm:h-[50px] min-w-[50px]">
               <Image
                 src={`${imageFolder}/titles/platform.webp`}
                 alt="platform page link"
@@ -48,7 +45,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
           </NavLink>
 
           <NavLink href="/studio">
-            <div className="relative shrink-0 w-[50px] sm:w-[95px] md:w-[120px] h-8 sm:h-[50px] min-w-[45px]">
+            <div className="relative w-[50px] sm:w-[95px] md:w-[120px] h-8 sm:h-[50px] min-w-[45px]">
               <Image
                 src={`${imageFolder}/titles/studio.webp`}
                 alt="studio page link"
@@ -61,16 +58,17 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
         </div>
       </nav>
 
-      {/* Instagram */}
-      <a
-        href={instagramUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="ml-4 shrink-0"
-        aria-label="Visit our studio Instagram"
-      >
-        <FaInstagram className="w-6 h-6 text-white sm:w-7 sm:h-7 md:w-8 md:h-8 min-w-6 min-h-6" />
-      </a>
+      {/* Instagram - absolute right */}
+      <div className="absolute flex items-center right-4 shrink-0">
+        <a
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit our studio Instagram"
+        >
+          <FaInstagram className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+        </a>
+      </div>
     </header>
   )
 }

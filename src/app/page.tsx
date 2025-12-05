@@ -15,11 +15,11 @@ export default function HomePage() {
 
   const handleImageLoad = () => {
     // small delay so Vanta renders behind loader
-    setTimeout(() => setLoading(false), 200)
+    setTimeout(() => setLoading(false), 1000)
   }
 
   return (
-    <div className="relative w-full h-dvh flex flex-col items-center justify-center z-20">
+    <div className="relative z-20 flex flex-col items-center justify-center w-full h-dvh">
       <VantaBackground />
 
       {/* Loader */}
@@ -31,10 +31,10 @@ export default function HomePage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 flex flex-col items-center justify-center bg-black z-50"
+            className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black"
           >
             {/* Loading Text */}
-            <p className="text-white text-xl mb-4 font-semibold tracking-wide">
+            <p className="mb-4 text-xl font-semibold tracking-wide text-white">
               Loading Alt World...
             </p>
 
@@ -42,7 +42,7 @@ export default function HomePage() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-              className="w-16 h-16 border-4 border-t-white border-gray-700 rounded-full"
+              className="w-16 h-16 border-4 border-gray-700 rounded-full border-t-white"
             />
           </motion.div>
         )}
@@ -74,7 +74,7 @@ export default function HomePage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
-              className="flex flex-col xl:flex-row gap-30 xl:gap-60 items-center justify-center w-full"
+              className="flex flex-col items-center justify-center w-full xl:flex-row gap-30 xl:gap-60"
             >
               <Link
                 href="/platform"
@@ -85,7 +85,7 @@ export default function HomePage() {
                   alt="Platform Page Link"
                   width={500}
                   height={300}
-                  className="rounded-lg shadow-lg w-full h-auto object-contain"
+                  className="object-contain w-full h-auto rounded-lg shadow-lg"
                 />
               </Link>
               <Link
@@ -97,7 +97,7 @@ export default function HomePage() {
                   alt="Studio Page Link"
                   width={380}
                   height={300}
-                  className="rounded-lg shadow-lg w-full h-auto object-contain"
+                  className="object-contain w-full h-auto rounded-lg shadow-lg"
                 />
               </Link>
             </motion.div>

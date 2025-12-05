@@ -14,7 +14,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children }) => {
   return (
     <Link
       href={href}
-      className={`px-4
+      className={`px-2 sm:px-4
         relative transition-colors font-semibold tracking-widest
         after:block after:absolute after:bottom-0 after:left-1/2 after:h-0.5 after:w-0 after:bg-current
         after:transition-all after:duration-300
