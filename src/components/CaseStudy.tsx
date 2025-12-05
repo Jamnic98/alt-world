@@ -10,10 +10,10 @@ interface CaseStudyProps {
 
 const CaseStudy: React.FC<CaseStudyProps> = ({ title, /* description */ imageSrcList }) => {
   return (
-    <div className="flex flex-col max-w-5xl gap-10 px-6 py-12 mx-auto">
+    <div className="flex flex-col gap-10 px-6 py-16 mx-auto">
       {/* <h1 className="text-3xl font-extrabold text-white md:text-4xl">{title}</h1> */}
 
-      <div className="flex flex-row justify-center">
+      <div className="flex justify-center w-full max-h-30">
         <Image
           src={title}
           alt=""
@@ -21,7 +21,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ title, /* description */ imageSrc
           height={200}
           placeholder="empty"
           priority
-          className="object-contain"
+          className="object-contain w-auto h-full"
         />
       </div>
 
