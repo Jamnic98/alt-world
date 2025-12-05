@@ -62,7 +62,7 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
     <div className="relative w-full overflow-hidden bg-transparent">
       <div
         ref={containerRef}
-        className="flex w-max items-center"
+        className="flex items-center w-max"
         style={{
           willChange: 'transform',
           transition: 'transform 0.1s linear',
@@ -71,14 +71,14 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
         {doubled.map((img, i) => (
           <div
             key={i}
-            className="shrink-0 relative h-72 w-auto flex items-center justify-center px-2"
+            className="relative flex items-center justify-center w-auto px-2 shrink-0 h-72"
           >
             <Image
               src={img.src}
               alt={img.alt || ''}
               width={800}
               height={600}
-              className="object-contain h-full w-auto"
+              className="object-contain w-auto h-full"
               priority={i < 2}
             />
           </div>

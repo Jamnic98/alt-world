@@ -21,20 +21,20 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
   `}
     >
       {/* Logo */}
-      <Link href="/" className="flex items-center mx-2 shrink-0 border-none">
+      <Link href="/" className="flex items-center mx-2 border-none shrink-0">
         <Image
           src={logoSrc}
           alt="AltWorld Logo"
           width={80}
           height={80}
           priority
-          className="w-14 sm:w-16 md:w-20 min-w-12 h-auto"
+          className="h-auto w-14 sm:w-16 md:w-20 min-w-12"
         />
       </Link>
 
       {/* Nav: centred */}
-      <nav className="flex-1 flex justify-center mx-2">
-        <div className="flex gap-4 sm:gap-8 md:gap-16 lg:gap-24">
+      <nav className="flex justify-center flex-1 mx-2">
+        <div className="flex gap-8 sm:gap-16 md:gap-24 lg:gap-32">
           <NavLink href="/platform">
             <div className="relative shrink-0 w-[60px] sm:w-[105px] md:w-[140px] h-8 sm:h-[50px] min-w-[50px]">
               <Image
@@ -69,7 +69,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
         className="ml-4 shrink-0"
         aria-label="Visit our studio Instagram"
       >
-        <FaInstagram className="text-white w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 min-w-6 min-h-6" />
+        <FaInstagram className="w-6 h-6 text-white sm:w-7 sm:h-7 md:w-8 md:h-8 min-w-6 min-h-6" />
       </a>
     </header>
   )

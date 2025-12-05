@@ -14,7 +14,7 @@ export const imageFolder = '/images'
 export const videoFolder = '/videos'
 
 // Image slideshow
-export const SLIDESHOW_SCROLL_SPEED = 0.25
+export const SLIDESHOW_SCROLL_SPEED = 0.4
 
 const slideshowFolder = `${imageFolder}/slideshow`
 const studioSlideshowFolder = `${slideshowFolder}/studio`
