@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 
 interface MailingListFormProps {
@@ -43,11 +42,11 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col w-full gap-3">
-      {title && <h1 className="text-xl font-semibold mb-2">{title}</h1>}
+      {title && <h1 className="mb-2 text-xl font-semibold">{title}</h1>}
 
       {success && <p className="text-green-400">Successfully joined!</p>}
 
-      <div className="flex flex-wrap gap-2 w-full">
+      <div className="flex flex-wrap w-full gap-2">
         <input
           type="text"
           placeholder="First Name"
@@ -66,7 +65,7 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
         />
       </div>
 
-      <div className="flex flex-wrap gap-2 w-full">
+      <div className="flex flex-wrap w-full gap-2">
         <input
           type="email"
           placeholder="Email"
@@ -79,11 +78,7 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
         <button
           type="submit"
           disabled={loading}
-          className="
-            basis-full sm:basis-auto px-6 py-2 rounded-md 
-            bg-amber-400 hover:bg-amber-500 text-white font-semibold 
-            transition disabled:opacity-50 cursor-pointer
-          "
+          className="px-6 py-2 font-semibold text-white transition rounded-md cursor-pointer  basis-full sm:basis-auto bg-amber-400 hover:bg-amber-500 disabled:opacity-50"
         >
           {loading ? 'Joining...' : 'Join'}
         </button>

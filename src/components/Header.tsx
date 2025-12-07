@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
             width={459}
             height={305}
             priority
-            className="w-16 h-auto sm:w-20 md:w-24"
+            className="w-16 h-auto mt-4 sm:w-20 md:w-24"
           />
         </Link>
       </div>

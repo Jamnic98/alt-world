@@ -53,6 +53,7 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
               src="/images/titles/join-the-family.webp"
               width={150}
               height={50}
+              className="mb-4"
             />
             {/* <p className="my-4 text-white/80">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor

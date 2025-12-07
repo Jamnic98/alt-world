@@ -25,7 +25,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ title, /* description */ imageSrc
         />
       </div>
 
-      {/* <p className="text-base md:text-lg text-gray-300 leading-relaxed">{description}</p> */}
+      {/* <p className="text-base leading-relaxed text-gray-300 md:text-lg">{description}</p> */}
 
       <ImageSlideshow images={imageSrcList} />
     </div>
