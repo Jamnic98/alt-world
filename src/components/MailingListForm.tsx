@@ -78,7 +78,7 @@ const MailingListForm = ({ title }: MailingListFormProps) => {
         <button
           type="submit"
           disabled={loading}
-          className="px-6 py-2 font-semibold text-white transition rounded-md cursor-pointer  basis-full sm:basis-auto bg-amber-400 hover:bg-amber-500 disabled:opacity-50"
+          className="px-6 py-2 font-semibold text-white transition rounded-md cursor-pointer basis-full sm:basis-auto bg-amber-400 hover:bg-amber-500 disabled:opacity-50"
         >
           {loading ? 'Joining...' : 'Join'}
         </button>

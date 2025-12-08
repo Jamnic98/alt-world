@@ -61,7 +61,7 @@ const PlatformPage = () => {
           </p>
         </div>
       </section>
-      <section>
+      <section className="mt-8">
         {caseStudies.map((caseStudy) => (
           <CaseStudy key={caseStudy.title} {...caseStudy} />
         ))}

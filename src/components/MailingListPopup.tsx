@@ -46,7 +46,6 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
             >
               ✕
             </button>
-
             {/* Top paragraph */}
             <Image
               alt="form title"
@@ -55,11 +54,11 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
               height={50}
               className="mb-4"
             />
-            {/* <p className="my-4 text-white/80">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua.
-            </p> */}
-
+            <p className="my-4 text-white/80">Welcome To Our Home!</p>
+            <p className="my-4 text-white/80">
+              Hey bestie, we have some super cool things loading and we want to keep you in the
+              loop!
+            </p>
             <MailingListForm />
           </motion.div>
         </motion.div>
