@@ -11,7 +11,7 @@ const zalandoSans = localFont({
 })
 
 export const metadata: Metadata = {
-  titleImageSrc: 'Alt World',
+  title: 'Alt World',
 }
 
 const RootLayout = ({
