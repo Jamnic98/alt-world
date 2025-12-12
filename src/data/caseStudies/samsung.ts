@@ -27,7 +27,8 @@ const imageSrcList = [
 ]
 
 const jamesonCaseStudy = {
-  title: '/images/titles/case-studies/samsung.webp',
+  titleImageSrc: '/images/titles/case-studies/samsung.webp',
+  imageDims: { width: 300, height: 200 },
   imageSrcList,
 }
 

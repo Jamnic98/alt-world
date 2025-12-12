@@ -13,7 +13,8 @@ const imageSrcList = [
 ]
 
 const genZCarnival = {
-  title: '/images/titles/case-studies/gen-z-carnival.webp',
+  titleImageSrc: '/images/titles/case-studies/gen-z-carnival.webp',
+  imageDims: { width: 350, height: 200 },
   description:
     'We supported Clapes Studio in executing the Gen Z Carnival in Accra — a high-energy celebration of youth fashion, technology, and culture. Powered by partners including Belaire and Crocs, the initiative brought together emerging designers, creators, and cultural innovators, positioning Ghana at the center of global youth culture and community-building.',
   imageSrcList,
