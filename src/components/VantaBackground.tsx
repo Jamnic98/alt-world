@@ -28,7 +28,7 @@ export default function VantaBackground() {
           el: vantaRef.current,
           THREE,
           backgroundColor: 0x0,
-          color: 0xffff00,
+          color: 0xffffff,
           points: 20,
           spacing: 20,
           maxDistance: 20,
@@ -45,5 +45,5 @@ export default function VantaBackground() {
     }
   }, [])
 
-  return <div className="fixed top-0 left-0 w-screen h-screen z-0" ref={vantaRef} />
+  return <div className="fixed top-0 left-0 z-0 w-screen h-screen" ref={vantaRef} />
 }

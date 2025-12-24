@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
         <Link href="/">
           <Image
             src={logoSrc}
-            alt="AltWorld Logo"
+            alt="Alt World Logo"
             width={459}
             height={305}
             priority
@@ -33,10 +33,10 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
       <nav className="flex justify-center flex-1">
         <div className="flex gap-6 sm:gap-8 md:gap-24 lg:gap-36 xl:gap-48">
           <NavLink href="/platform">
-            <div className="relative w-[50px] sm:w-[95px] md:w-[140px] h-8 sm:h-[50px] min-w-[50px]">
+            <div className="relative w-[70px] sm:w-[115px] md:w-[140px] h-8 sm:h-[50px] min-w-[50px]">
               <Image
                 src={`${imageFolder}/titles/platform.webp`}
-                alt="platform page link"
+                alt="Platform page link"
                 fill
                 className="object-contain"
                 priority
@@ -45,10 +45,10 @@ const Header: React.FC<HeaderProps> = ({ logoSrc, instagramUrl }) => {
           </NavLink>
 
           <NavLink href="/studio">
-            <div className="relative w-[50px] sm:w-[95px] md:w-[120px] h-8 sm:h-[50px] min-w-[45px]">
+            <div className="relative w-[50px] sm:w-[90px] md:w-[110px] h-8 sm:h-[50px] min-w-[45px]">
               <Image
                 src={`${imageFolder}/titles/studio.webp`}
-                alt="studio page link"
+                alt="Studio page link"
                 fill
                 className="object-contain"
                 priority

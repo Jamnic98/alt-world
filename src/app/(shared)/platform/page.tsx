@@ -32,7 +32,7 @@ const PlatformPage = () => {
         <div className="relative z-20 flex flex-col items-center justify-center max-w-2xl px-4 mt-12 space-y-6 text-center grow">
           <Image
             src={`${imageFolder}/our_platform.webp`}
-            alt="Our Platform Title"
+            alt="Platform Page Title"
             width={500}
             height={100}
             className="w-68 sm:w-72 md:w-[500px] h-auto"

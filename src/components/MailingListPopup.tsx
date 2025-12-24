@@ -37,18 +37,18 @@ const MailingListPopup = ({ open, onClose }: MailingListPopupProps) => {
             animate={{ scale: 1 }}
             exit={{ scale: 0.8 }}
             transition={{ duration: 0.3 }}
-            className="relative w-full max-w-md p-6 mx-8 text-white bg-gray-900 rounded-lg"
+            className="relative w-full max-w-md p-6 mx-8 text-white bg-black rounded-lg"
           >
             {/* Close button */}
             <button
               onClick={onClose}
-              className="absolute text-lg font-bold text-white cursor-pointer top-3 right-3 hover:text-amber-400"
+              className="absolute text-lg font-bold text-white cursor-pointer top-3 right-3"
             >
               ✕
             </button>
             {/* Top paragraph */}
             <Image
-              alt="form title"
+              alt="Waitlist form title"
               src="/images/titles/join-the-family.webp"
               width={150}
               height={50}

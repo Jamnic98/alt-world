@@ -75,7 +75,7 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({ images }) => {
           >
             <Image
               src={img.src}
-              alt={img.alt || ''}
+              alt={img.alt || 'Slideshow image'}
               width={800}
               height={600}
               className="object-contain w-auto h-full"

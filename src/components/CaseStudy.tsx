@@ -17,7 +17,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({ titleImageSrc, imageDims, imageSr
       <div className="flex justify-center w-full max-h-30">
         <Image
           src={titleImageSrc}
-          alt=""
+          alt="Case study image"
           width={imageDims.width}
           height={imageDims.height}
           placeholder="empty"

@@ -36,7 +36,7 @@ const StudioPage = () => {
         <div className="relative z-20 flex flex-col items-center justify-center max-w-2xl px-4 mt-12 space-y-8 text-center grow">
           <Image
             src={`${imageFolder}/our_studio.webp`}
-            alt="Our Studio Title"
+            alt="Studio Page Title"
             width={400}
             height={100}
             className="w-52 sm:w-64 md:w-[400px] h-auto"

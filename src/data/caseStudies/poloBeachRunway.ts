@@ -21,12 +21,6 @@ const imageSrcList = [
   { src: `${imageFolder}/18.webp` },
   { src: `${imageFolder}/19.webp` },
   { src: `${imageFolder}/20.webp` },
-  { src: `${imageFolder}/21.webp` },
-  { src: `${imageFolder}/22.webp` },
-  { src: `${imageFolder}/23.webp` },
-  { src: `${imageFolder}/24.webp` },
-  { src: `${imageFolder}/25.webp` },
-  { src: `${imageFolder}/26.webp` },
 ]
 
 const poloBeachRunwayCaseStudy = {

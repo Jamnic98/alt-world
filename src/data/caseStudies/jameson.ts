@@ -16,7 +16,6 @@ const imageSrcList = [
   { src: `${imageFolder}/13.webp` },
   { src: `${imageFolder}/14.webp` },
   { src: `${imageFolder}/15.webp` },
-  { src: `${imageFolder}/16.webp` },
 ]
 
 const jamesonCaseStudy = {
